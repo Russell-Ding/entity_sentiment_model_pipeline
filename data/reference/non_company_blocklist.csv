@@ -1,0 +1,60 @@
+name,category,notes
+Fed,government,US Federal Reserve
+Federal Reserve,government,US central bank
+FOMC,government,Federal Open Market Committee
+Treasury,government,US Treasury Department
+Congress,government,US Congress
+White House,government,US executive branch
+SEC,government,Securities and Exchange Commission
+FTC,government,Federal Trade Commission
+DOJ,government,Department of Justice
+FDA,government,Food and Drug Administration
+DOJ,government,duplicate
+EU,government,European Union
+European Union,government,EU
+European Commission,government,EU executive
+EC,government,European Commission abbrev
+UN,government,United Nations
+United Nations,government,UN
+WHO,government,World Health Organization
+NATO,government,North Atlantic Treaty Organization
+IMF,government,International Monetary Fund
+OECD,government,Organisation for Economic Co-operation and Development
+G7,government,Group of Seven
+G20,government,Group of Twenty
+NYSE,exchange,New York Stock Exchange
+Nasdaq,exchange,Nasdaq exchange (ticker NDAQ for the company itself)
+LSE,exchange,London Stock Exchange
+HKEX,exchange,Hong Kong Exchange
+ECB,government,European Central Bank
+BOJ,government,Bank of Japan
+PBOC,government,People's Bank of China
+Reuters,news,Thomson Reuters news outlet
+Bloomberg,news,Bloomberg LP news/data (private)
+Bloomberg LP,news,Bloomberg LP
+CNBC,news,news outlet
+WSJ,news,Wall Street Journal
+Wall Street Journal,news,WSJ
+Financial Times,news,FT
+FT,news,Financial Times
+New York Times,news,NYT
+NYT,news,New York Times
+Forbes,news,news outlet
+Barrons,news,Barron's news outlet
+Seeking Alpha,news,investing news platform
+TheStreet,news,news outlet
+MarketWatch,news,news outlet
+Benzinga,news,news outlet
+Yahoo,news,Yahoo Finance (parent: Apollo/private now)
+Yahoo Finance,news,news platform
+Group,generic,generic suffix word
+Inc,generic,corporate suffix
+Corp,generic,corporate suffix
+Co,generic,corporate suffix
+Ltd,generic,corporate suffix
+Company,generic,generic word
+Corporation,generic,generic word
+Holdings,generic,generic word
+Limited,generic,generic word
+LLC,generic,corporate suffix
+PLC,generic,corporate suffix

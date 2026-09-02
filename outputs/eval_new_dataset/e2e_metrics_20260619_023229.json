@@ -1,0 +1,223 @@
+{
+  "meta": {
+    "checkpoint": "<repo>/trained_model/v2.0_20260517/model.pt",
+    "benchmark": "<repo>/data/labeled/deepseek_t1/labels_10ticker.final.jsonl",
+    "checkpoint_epoch": 8,
+    "iou_threshold": 0.5,
+    "weighted_aggregation": false,
+    "ner_mode": "single-pass",
+    "ner_confidence": 0.7,
+    "timestamp": "20260619_023229",
+    "device": "cuda:0",
+    "max_length": 2048,
+    "n_articles_attempted": 30829,
+    "n_articles_succeeded": 30829,
+    "failure_reasons": {},
+    "ner_diagnostics": {
+      "n_articles_pass1_zero_confident": 51,
+      "frac_articles_pass1_zero_confident": 0.0016542865483797722,
+      "n_articles_used_pass2_ner": 0,
+      "frac_articles_used_pass2_ner": 0.0,
+      "avg_pass1_spans_per_article": 19.885075740374322,
+      "avg_pass1_high_conf_tokens_per_article": 0.0
+    }
+  },
+  "n_articles": 30829,
+  "elapsed_seconds": 5290.301667690277,
+  "ner_metrics": {
+    "overall_all_types": {
+      "precision": 0.8441741689327071,
+      "recall": 0.37021907961380635,
+      "f1": 0.514708697911616,
+      "tp": 517510,
+      "fp": 95527,
+      "fn": 880338
+    },
+    "overall_sentiment_types": {
+      "precision": 0.8555991674665704,
+      "recall": 0.4651269725802052,
+      "f1": 0.60264159001468,
+      "tp": 450135,
+      "fp": 75970,
+      "fn": 517633
+    },
+    "per_type": {
+      "DATE": {
+        "precision": 0.8560214316864992,
+        "recall": 0.059192245557350566,
+        "f1": 0.11072787054348528,
+        "tp": 13740,
+        "fp": 2311,
+        "fn": 218385
+      },
+      "MONEY": {
+        "precision": 0.7978437904867666,
+        "recall": 0.35623456981416635,
+        "f1": 0.4925480786397298,
+        "tp": 34486,
+        "fp": 8738,
+        "fn": 62321
+      },
+      "ORG": {
+        "precision": 0.8828928465300633,
+        "recall": 0.5609468379586912,
+        "f1": 0.6860262338512338,
+        "tp": 395159,
+        "fp": 52414,
+        "fn": 309291
+      },
+      "PERCENT": {
+        "precision": 0.6923744440828723,
+        "recall": 0.1893166449163602,
+        "f1": 0.2973331780598579,
+        "tp": 19149,
+        "fp": 8508,
+        "fn": 81999
+      },
+      "PERSON": {
+        "precision": 0.6920658282044421,
+        "recall": 0.218789919378717,
+        "f1": 0.3324720234996176,
+        "tp": 51725,
+        "fp": 23015,
+        "fn": 184689
+      },
+      "TICKER": {
+        "precision": 0.857331223628692,
+        "recall": 0.12083705025275052,
+        "f1": 0.2118191295282773,
+        "tp": 3251,
+        "fp": 541,
+        "fn": 23653
+      }
+    }
+  },
+  "coverage": {
+    "n_total_gold_with_sentiment": 337120,
+    "n_covered": 164723,
+    "coverage_rate": 0.4886182961556716
+  },
+  "sentiment_on_covered": {
+    "n": 164723,
+    "mse": 0.07700236141681671,
+    "mae": 0.20875908434391022,
+    "pearson_r": 0.48467422215524913,
+    "pred_min": -0.5732096433639526,
+    "pred_max": 0.6740047931671143,
+    "pred_mean": 0.02368743345141411,
+    "pred_std": 0.17919689416885376,
+    "gold_min": -1.0,
+    "gold_max": 1.0,
+    "gold_mean": 0.012670661322772503,
+    "gold_std": 0.3155694007873535
+  },
+  "per_type_sentiment": {
+    "ORG": {
+      "n": 126865,
+      "mse": 0.07655108720064163,
+      "mae": 0.20787827670574188,
+      "pearson_r": 0.48612077697684397
+    },
+    "PERSON": {
+      "n": 35749,
+      "mse": 0.07703734189271927,
+      "mae": 0.20920053124427795,
+      "pearson_r": 0.4929502444436574
+    },
+    "TICKER": {
+      "n": 2109,
+      "mse": 0.1035560891032219,
+      "mae": 0.2542569637298584,
+      "pearson_r": 0.6220387472476449
+    }
+  },
+  "joint_accuracy": {
+    "tol_0.1": 0.3704643553116444,
+    "tol_0.2": 0.5775392628837503,
+    "tol_0.3": 0.7335466206904925,
+    "tol_0.4": 0.8473012269082034,
+    "tol_0.5": 0.9192280373718302
+  },
+  "bucket_confusion": {
+    "negative": {
+      "negative": 9399,
+      "neutral": 23330,
+      "positive": 1972
+    },
+    "very_positive": {
+      "neutral": 2165,
+      "positive": 3944,
+      "negative": 231,
+      "very_positive": 25
+    },
+    "neutral": {
+      "neutral": 70065,
+      "positive": 5555,
+      "negative": 2771,
+      "very_positive": 1
+    },
+    "positive": {
+      "neutral": 28521,
+      "positive": 13105,
+      "negative": 1990,
+      "very_positive": 16
+    },
+    "very_negative": {
+      "neutral": 1017,
+      "negative": 553,
+      "positive": 63
+    }
+  },
+  "bucket_metrics": {
+    "exact_acc": 0.5621194368728107,
+    "adjacent_acc": 0.9548393363404017
+  },
+  "matched_preds_distribution": {
+    "5": 5367,
+    "3": 10643,
+    "1": 99457,
+    "2": 20508,
+    "9": 2144,
+    "6": 4198,
+    "7": 3394,
+    "8": 2706,
+    "11": 1403,
+    "18": 315,
+    "29": 38,
+    "12": 1106,
+    "4": 7237,
+    "13": 884,
+    "14": 719,
+    "10": 1735,
+    "21": 180,
+    "24": 114,
+    "23": 128,
+    "17": 400,
+    "16": 446,
+    "39": 12,
+    "19": 280,
+    "33": 19,
+    "28": 45,
+    "20": 182,
+    "15": 568,
+    "22": 138,
+    "26": 68,
+    "30": 41,
+    "32": 20,
+    "25": 82,
+    "34": 13,
+    "36": 9,
+    "35": 9,
+    "31": 30,
+    "27": 68,
+    "41": 2,
+    "40": 1,
+    "43": 2,
+    "42": 1,
+    "37": 2,
+    "38": 4,
+    "44": 2,
+    "48": 1,
+    "46": 2
+  }
+}

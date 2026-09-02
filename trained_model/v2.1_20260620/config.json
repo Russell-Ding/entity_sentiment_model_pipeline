@@ -1,0 +1,36 @@
+{
+  "encoder_name": "allenai/longformer-large-4096",
+  "hidden_size": 1024,
+  "max_length": 2048,
+  "use_ner_head": true,
+  "use_coref_head": false,
+  "use_crf_ner": true,
+  "num_ner_labels": 15,
+  "ner_label_to_id": {
+    "O": 0,
+    "B-COMPANY": 1,
+    "I-COMPANY": 2,
+    "B-TICKER": 3,
+    "I-TICKER": 4,
+    "B-PERSON": 5,
+    "I-PERSON": 6,
+    "B-ORG": 7,
+    "I-ORG": 8,
+    "B-MONEY": 9,
+    "I-MONEY": 10,
+    "B-PERCENT": 11,
+    "I-PERCENT": 12,
+    "B-DATE": 13,
+    "I-DATE": 14
+  },
+  "sentiment_head_version": "V2_cross_attention",
+  "sentiment_score_range": [
+    -0.95,
+    0.95
+  ],
+  "trained_with_global_attn_dropout": true,
+  "global_attn_dropout_prob": 0.3,
+  "global_attn_dropout_warmup_frac": 0.3,
+  "sentiment_head_retrained": "v2.1: sentiment head retrained on DeepSeek+Kimi decisive labels with CCC+weighted-Huber loss (frozen encoder+NER). NER identical to v2.0.",
+  "base_checkpoint": "v2.0_20260517"
+}

@@ -1,0 +1,62 @@
+{
+  "ner": {
+    "per_class": {
+      "B-COMPANY": {
+        "precision": 0.1592920353982301,
+        "recall": 0.04472049689440994,
+        "f1": 0.06983511154219205,
+        "support": 805
+      },
+      "I-COMPANY": {
+        "precision": 0.22058823529411764,
+        "recall": 0.03926701570680628,
+        "f1": 0.06666666666666667,
+        "support": 382
+      }
+    },
+    "overall": {
+      "precision": 0.17346938775510204,
+      "recall": 0.04296545914069082,
+      "f1": 0.06887238352464552,
+      "total_predicted": 294,
+      "total_ground_truth": 1187
+    }
+  },
+  "sentiment_standalone": {
+    "mse": 0.03481751559189131,
+    "rmse": 0.18659452186999304,
+    "mae": 0.16088910655677316,
+    "pearson_r": 0.9264240209879149,
+    "pearson_p": 6.070115364274317e-86,
+    "spearman_r": 0.877158822311207,
+    "spearman_p": 5.382530744987893e-65,
+    "total_entities": 235,
+    "evaluated_entities": 200,
+    "missing_entities": 35,
+    "missing_pct": 14.893617021276595
+  },
+  "spacy_pipeline": {
+    "mse": 0.04149185905771534,
+    "rmse": 0.20369550573764592,
+    "mae": 0.16504081074191496,
+    "pearson_r": 0.8847782520113001,
+    "spearman_r": 0.8442486145714231,
+    "total_entities": 235,
+    "detected_by_spacy": 235,
+    "evaluated_entities": 227,
+    "missing_entities": 0,
+    "missing_pct": 0.0
+  },
+  "full_pipeline": {
+    "mse": 0.031016688982076896,
+    "rmse": 0.17611555576404062,
+    "mae": 0.14566321018982517,
+    "pearson_r": 0.9166683673922155,
+    "spearman_r": 0.8729739579340875,
+    "total_entities": 235,
+    "detected_by_crf": 235,
+    "evaluated_entities": 208,
+    "missing_entities": 0,
+    "missing_pct": 0.0
+  }
+}

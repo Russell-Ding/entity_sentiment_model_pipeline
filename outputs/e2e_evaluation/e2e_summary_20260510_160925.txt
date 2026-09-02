@@ -1,0 +1,80 @@
+================================================================================
+  END-TO-END PIPELINE EVALUATION  --  V2
+  Checkpoint: <repo>/checkpoints/best_model_20260418.pt
+  Benchmark : <repo>/data/labeled/final/holdout_relabeled.jsonl
+  Articles  : 30    Elapsed: 146.7s    IoU>=0.5
+  Aggregation: unweighted mean-pool
+  NER mode  : two-pass  (confidence_threshold=0.7)
+================================================================================
+
+------------------------------------------------------------
+  NER PIPELINE DIAGNOSTICS
+------------------------------------------------------------
+  Articles where Pass 1 produced 0 confident spans: 21  (70.0%)
+  Articles where Pass 2 NER ran                    : 9  (30.0%)
+  Avg Pass 1 spans per article                     : 3.50
+  Avg Pass 1 high-confidence tokens per article    : 7.57
+
+------------------------------------------------------------
+  NER (SPAN-LEVEL, all entity types)
+------------------------------------------------------------
+  Precision: 0.1429   Recall: 0.0147   F1: 0.0266
+  TP=17   FP=102   FN=1,141
+
+  NER (sentiment-bearing types only: ORG/TICKER/PERSON/COMPANY)
+  Precision: 0.0000   Recall: 0.0000   F1: 0.0000
+  TP=0   FP=41   FN=1,050
+
+  Type           Prec   Recall       F1        TP       FP       FN
+  ---------- -------- -------- --------  -------- -------- --------
+  DATE         0.7500   0.1000   0.1765         6        2       54
+  MONEY        0.2286   0.1818   0.2025         8       27       36
+  ORG          0.0000   0.0000   0.0000         0       20      809
+  PERCENT      0.0857   0.7500   0.1538         3       32        1
+  PERSON       0.0000   0.0000   0.0000         0       15      117
+  TICKER       0.0000   0.0000   0.0000         0        6      124
+
+------------------------------------------------------------
+  ENTITY COVERAGE (sentiment-bearing gold entities)
+------------------------------------------------------------
+  Coverage rate: 0.0000
+  Covered      : 0 / 288
+
+------------------------------------------------------------
+  SENTIMENT QUALITY (on covered gold entities)
+------------------------------------------------------------
+
+------------------------------------------------------------
+  PER-TYPE SENTIMENT (on covered)
+------------------------------------------------------------
+  Type              N        MSE        MAE       Corr
+  ---------- -------- ---------- ---------- ----------
+
+------------------------------------------------------------
+  JOINT ACCURACY (matched span + sentiment within tolerance)
+------------------------------------------------------------
+  |pred - gold| <= 0.1: 0.0000
+  |pred - gold| <= 0.2: 0.0000
+  |pred - gold| <= 0.3: 0.0000
+  |pred - gold| <= 0.4: 0.0000
+  |pred - gold| <= 0.5: 0.0000
+
+------------------------------------------------------------
+  SENTIMENT BUCKET CONFUSION  (rows=true, cols=predicted)
+------------------------------------------------------------
+  True \ Pred       very_negative       negative        neutral       positive  very_positive      Total
+  ---------------- -------------- -------------- -------------- -------------- -------------- ----------
+  very_negative                 0              0              0              0              0          0
+  negative                      0              0              0              0              0          0
+  neutral                       0              0              0              0              0          0
+  positive                      0              0              0              0              0          0
+  very_positive                 0              0              0              0              0          0
+
+  Exact bucket accuracy   : 0.0000
+  Adjacent bucket accuracy: 0.0000
+
+------------------------------------------------------------
+  MATCHED PREDICTIONS PER GOLD ENTITY
+------------------------------------------------------------
+
+================================================================================

@@ -1,0 +1,2394 @@
+{
+  "prevalence": {
+    "ibd": {
+      "count": 73,
+      "fraction": 0.014711809754131399,
+      "confidence_distribution": {
+        "high": 68,
+        "medium": 5
+      }
+    },
+    "yahoo_seo_promotional": {
+      "count": 634,
+      "fraction": 0.12777106005642885,
+      "confidence_distribution": {
+        "high": 563,
+        "medium": 71
+      }
+    },
+    "motleyfool": {
+      "count": 691,
+      "fraction": 0.1392583635630794,
+      "confidence_distribution": {
+        "medium": 139,
+        "high": 552
+      }
+    },
+    "gurufocus": {
+      "count": 73,
+      "fraction": 0.014711809754131399,
+      "confidence_distribution": {
+        "high": 68,
+        "medium": 5
+      }
+    },
+    "zacks_press_release": {
+      "count": 974,
+      "fraction": 0.196291817815397,
+      "confidence_distribution": {
+        "high": 926,
+        "medium": 48
+      }
+    },
+    "reuters": {
+      "count": 226,
+      "fraction": 0.04554615074566707,
+      "confidence_distribution": {
+        "high": 210,
+        "medium": 16
+      }
+    },
+    "yahoo_market_wrap": {
+      "count": 215,
+      "fraction": 0.04332930270052398,
+      "confidence_distribution": {
+        "high": 146,
+        "medium": 67,
+        "low": 2
+      }
+    },
+    "press_release_other": {
+      "count": 800,
+      "fraction": 0.16122531237404272,
+      "confidence_distribution": {
+        "high": 780,
+        "medium": 20
+      }
+    },
+    "other": {
+      "count": 329,
+      "fraction": 0.06630390971382508,
+      "confidence_distribution": {
+        "high": 129,
+        "medium": 174,
+        "low": 26
+      }
+    },
+    "investing_com": {
+      "count": 91,
+      "fraction": 0.01833937928254736,
+      "confidence_distribution": {
+        "high": 87,
+        "medium": 4
+      }
+    },
+    "yahoo_analyst_call": {
+      "count": 82,
+      "fraction": 0.01652559451833938,
+      "confidence_distribution": {
+        "high": 72,
+        "medium": 10
+      }
+    },
+    "yahoo_stock_bulletin": {
+      "count": 179,
+      "fraction": 0.03607416364369206,
+      "confidence_distribution": {
+        "medium": 38,
+        "high": 141
+      }
+    },
+    "bloomberg": {
+      "count": 142,
+      "fraction": 0.028617492946392584,
+      "confidence_distribution": {
+        "high": 126,
+        "medium": 16
+      }
+    },
+    "insider_monkey": {
+      "count": 71,
+      "fraction": 0.014308746473196292,
+      "confidence_distribution": {
+        "high": 64,
+        "medium": 7
+      }
+    },
+    "simplywallst": {
+      "count": 32,
+      "fraction": 0.006449012494961709,
+      "confidence_distribution": {
+        "high": 30,
+        "medium": 2
+      }
+    },
+    "barrons": {
+      "count": 31,
+      "fraction": 0.006247480854494156,
+      "confidence_distribution": {
+        "high": 25,
+        "medium": 6
+      }
+    },
+    "ap": {
+      "count": 20,
+      "fraction": 0.004030632809351068,
+      "confidence_distribution": {
+        "high": 18,
+        "medium": 2
+      }
+    },
+    "benzinga": {
+      "count": 24,
+      "fraction": 0.0048367593712212815,
+      "confidence_distribution": {
+        "medium": 6,
+        "high": 18
+      }
+    },
+    "seeking_alpha": {
+      "count": 53,
+      "fraction": 0.010681176944780331,
+      "confidence_distribution": {
+        "high": 52,
+        "medium": 1
+      }
+    },
+    "mt_newswires": {
+      "count": 43,
+      "fraction": 0.008665860540104797,
+      "confidence_distribution": {
+        "high": 43
+      }
+    },
+    "marketwatch": {
+      "count": 66,
+      "fraction": 0.013301088270858524,
+      "confidence_distribution": {
+        "medium": 32,
+        "high": 34
+      }
+    },
+    "earnings_transcript": {
+      "count": 41,
+      "fraction": 0.00826279725916969,
+      "confidence_distribution": {
+        "high": 40,
+        "low": 1
+      }
+    },
+    "wsj": {
+      "count": 32,
+      "fraction": 0.006449012494961709,
+      "confidence_distribution": {
+        "high": 26,
+        "medium": 6
+      }
+    },
+    "ft": {
+      "count": 15,
+      "fraction": 0.003022974607013301,
+      "confidence_distribution": {
+        "medium": 5,
+        "high": 10
+      }
+    },
+    "barchart": {
+      "count": 25,
+      "fraction": 0.005038291011688835,
+      "confidence_distribution": {
+        "high": 21,
+        "medium": 4
+      }
+    }
+  },
+  "candidates": {
+    "ibd": {
+      "count": 73,
+      "top_prefixes_50": [
+        [
+          "The \"hard penny\" market rally retreated Monday, le",
+          2
+        ],
+        [
+          "The major indexes indexes ran back above key level",
+          2
+        ],
+        [
+          "Economic uncertainty hasn't been kind to Wall Stre",
+          2
+        ],
+        [
+          "MCO may require a lot more time before it gets its",
+          2
+        ],
+        [
+          "Viavi Solutions stock had its Relative Strength (R",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "The \"hard penny\" market rally retreated Monday, le",
+          1
+        ],
+        [
+          "The \"hard penny\" market rally retreated Monday, led by Tesla, Nvidia and Square. IBM flirted with a",
+          1
+        ],
+        [
+          "The major indexes indexes ran back above key level",
+          1
+        ],
+        [
+          "The major indexes indexes ran back above key levels. Many leaders flashed buy signals, including Nvi",
+          1
+        ],
+        [
+          "Economic uncertainty hasn't been kind to Wall Stre",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [],
+      "distinctive_trigrams": [],
+      "sample_titles": [
+        "Dow Jones Futures Signal Further Losses For 'Hard Penny' Market Rally; Netflix Near Buy With Earnings Due",
+        "Dow Jones Futures Loom After Big Bullish Week; Nvidia Partner Leads Stocks In Buy Zones",
+        "3 Leading Med Stocks Carve Fat Gains From A Fearful Market",
+        "Mettler Toledo Rebounds As Base Takes Shape; Can ASML Attract More Demand?",
+        "Viavi Solutions Stock Scores RS Rating Jump To 91"
+      ]
+    },
+    "yahoo_seo_promotional": {
+      "count": 634,
+      "top_prefixes_50": [
+        [
+          "Key Insights  Given the large stake in the stock b",
+          10
+        ],
+        [
+          "In this article, we will be taking a look at the 1",
+          8
+        ],
+        [
+          "In this article, we will take a look at the 10 sto",
+          8
+        ],
+        [
+          "Check out the companies making headlines yesterday",
+          6
+        ],
+        [
+          "In this article, we will take a look at the 10 bes",
+          6
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Key Insights  Given the large stake in the stock b",
+          5
+        ],
+        [
+          "In this article, we will be taking a look at the 1",
+          4
+        ],
+        [
+          "In this article, we will take a look at the 10 sto",
+          4
+        ],
+        [
+          "Check out the companies making headlines yesterday",
+          3
+        ],
+        [
+          "In this article, we will take a look at the 10 bes",
+          3
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "company nyse",
+          0.9794952681388013
+        ],
+        [
+          "fund holders",
+          0.8548895899053628
+        ],
+        [
+          "dividend stocks",
+          0.7870662460567823
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "number of hedge",
+          1.0646687697160884
+        ],
+        [
+          "of hedge fund",
+          1.0457413249211356
+        ],
+        [
+          "hedge fund holders",
+          0.8517350157728707
+        ],
+        [
+          "of the best",
+          0.6971608832807571
+        ],
+        [
+          "by insider monkey",
+          0.42113564668769715
+        ]
+      ],
+      "sample_titles": [
+        "7 Nasdaq Stocks With Superior Fundamentals",
+        "If You Can Only Buy One Dividend Stock in April, It Better Be One of These 3 Names",
+        "World's Biggest Stock Exchanges Call for Crackdown on 'Fake' Tokenized Stocks—And Why Coinbase And Robinhood Should Be Worried",
+        "10 Dividend Stocks with Sustainable Payout Ratios",
+        "3 Industrial Stocks to Sell Before You Regret It"
+      ]
+    },
+    "motleyfool": {
+      "count": 691,
+      "top_prefixes_50": [
+        [
+          "How do you pick the next stock to invest in? One w",
+          10
+        ],
+        [
+          "Although the masses and most of the financial medi",
+          10
+        ],
+        [
+          "Today we're going to take a look at the well-estab",
+          8
+        ],
+        [
+          "In this article we are going to use hedge fund sen",
+          8
+        ],
+        [
+          "To find a multi-bagger stock, what are the underly",
+          8
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "How do you pick the next stock to invest in? One w",
+          5
+        ],
+        [
+          "How do you pick the next stock to invest in? One way would be to spend days of research browsing thr",
+          5
+        ],
+        [
+          "Although the masses and most of the financial medi",
+          5
+        ],
+        [
+          "Although the masses and most of the financial media blame hedge funds for their exorbitant fee struc",
+          5
+        ],
+        [
+          "In this article you are going to find out whether",
+          4
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "motley fool",
+          0.7771345875542692
+        ],
+        [
+          "the motley",
+          0.7293777134587555
+        ],
+        [
+          "us b",
+          0.5817655571635311
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "the motley fool",
+          0.7279305354558611
+        ],
+        [
+          "no position in",
+          0.3342981186685962
+        ],
+        [
+          "position in any",
+          0.3314037626628075
+        ],
+        [
+          "has no position",
+          0.3256150506512301
+        ],
+        [
+          "motley fool has",
+          0.3068017366136035
+        ]
+      ],
+      "sample_titles": [
+        "How Investors Are Reacting To Loews (L) Earnings Beat and Continued Share Buybacks",
+        "2 Historically Flawless Metrics Suggest the Stock Market Can Plunge: Here Are 3 Stocks I've Sold Ahead of What May Be a Big Move for Wall Street",
+        "Why This Company Could See Long-Lasting Tailwinds Despite the Bear Market",
+        "Hedge Funds Have Never Been This Bullish On Corning Incorporated (GLW)",
+        "Which of These Stocks Has Been the Best Post-Split Buy?"
+      ]
+    },
+    "gurufocus": {
+      "count": 73,
+      "top_prefixes_50": [
+        [
+          "Monolithic Power Systems Inc (NASDAQ:MPWR) has rec",
+          2
+        ],
+        [
+          "This article first appeared on GuruFocus.  The bea",
+          2
+        ],
+        [
+          "- By James Li  According to the All-in-One Screene",
+          2
+        ],
+        [
+          "Tokyo, M0, based Investment company Nomura Asset M",
+          2
+        ],
+        [
+          "Insight into the Latest 13F Filings Reveals Strate",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Monolithic Power Systems Inc (NASDAQ:MPWR) has rec",
+          1
+        ],
+        [
+          "Monolithic Power Systems Inc (NASDAQ:MPWR) has recently been in the spotlight, drawing interest from",
+          1
+        ],
+        [
+          "This article first appeared on GuruFocus.  The bea",
+          1
+        ],
+        [
+          "This article first appeared on GuruFocus.  The bearish view on the Japanese yen is gaining traction",
+          1
+        ],
+        [
+          "Hasbro (HAS, Financials) said Tuesday it will lay",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "sale prices",
+          1.821917808219178
+        ],
+        [
+          "new purchase",
+          1.6027397260273972
+        ],
+        [
+          "initiated holding",
+          1.6027397260273972
+        ],
+        [
+          "of added",
+          1.6027397260273972
+        ],
+        [
+          "of sold",
+          1.5890410958904109
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "to a holding",
+          1.9452054794520548
+        ],
+        [
+          "the sale prices",
+          1.821917808219178
+        ],
+        [
+          "sale prices were",
+          1.821917808219178
+        ],
+        [
+          "added to a",
+          1.63013698630137
+        ],
+        [
+          "by the purchase",
+          1.63013698630137
+        ]
+      ],
+      "sample_titles": [
+        "Monolithic Power Systems Inc (MPWR): A Deep Dive into Financial Metrics and Competitive Strengths",
+        "Yen Slides Back as BOJ Hike Fails to Shift Bearish Outlook",
+        "Hasbro (HAS) to Cut 3% of Workforce Amid Tariff Pressures",
+        "5 Stocks Warren Buffett and Bill Gates Agree On",
+        "Nomura Asset Management Co Ltd Buys Blackstone Secured Lending Fund, Thermo Fisher Scientific ..."
+      ]
+    },
+    "zacks_press_release": {
+      "count": 974,
+      "top_prefixes_50": [
+        [
+          "A month has gone by since the last earnings report",
+          26
+        ],
+        [
+          "For new and old investors, taking full advantage o",
+          18
+        ],
+        [
+          "Wall Street expects a year-over-year increase in e",
+          16
+        ],
+        [
+          "Wall Street expects a year-over-year decline in ea",
+          14
+        ],
+        [
+          "It doesn't matter your age or experience: taking f",
+          12
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "A month has gone by since the last earnings report",
+          13
+        ],
+        [
+          "It has been about a month since the last earnings",
+          9
+        ],
+        [
+          "For new and old investors, taking full advantage o",
+          9
+        ],
+        [
+          "For new and old investors, taking full advantage of the stock market and investing with confidence a",
+          9
+        ],
+        [
+          "Wall Street expects a year-over-year increase in e",
+          8
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "the zacks",
+          4.136550308008213
+        ],
+        [
+          "zacks rank",
+          3.59958932238193
+        ],
+        [
+          "free stock",
+          2.8921971252566734
+        ],
+        [
+          "consensus estimate",
+          2.7032854209445585
+        ],
+        [
+          "zacks consensus",
+          2.5020533880903493
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "free stock analysis",
+          2.891170431211499
+        ],
+        [
+          "stock analysis report",
+          2.891170431211499
+        ],
+        [
+          "the zacks consensus",
+          2.4034907597535935
+        ],
+        [
+          "zacks consensus estimate",
+          2.3408624229979464
+        ],
+        [
+          "a zacks rank",
+          1.7782340862422998
+        ]
+      ],
+      "sample_titles": [
+        "Is T. Rowe Price Global Stock (PRGSX) a Strong Mutual Fund Pick Right Now?",
+        "3 Reasons Why Kroger (KR) Is a Great Growth Stock",
+        "Illinois Tool Stock Exhibits Strong Prospects Despite Persisting Headwinds",
+        "Hubbell (HUBB) Outpaces Stock Market Gains: What You Should Know",
+        "Agilent (A) to Report Q4 Earnings: What's in the Cards?"
+      ]
+    },
+    "reuters": {
+      "count": 226,
+      "top_prefixes_50": [
+        [
+          "(For a Reuters live blog on U.S., UK and European",
+          10
+        ],
+        [
+          "(For a Reuters live blog on U.S., UK and European ",
+          10
+        ],
+        [
+          "By Tim Reid, Alexandra Ulmer and Nathan Layne  Sep",
+          4
+        ],
+        [
+          "(adds details from interview, background)  April 1",
+          2
+        ],
+        [
+          "(Reuters) - Billionaire investor George Soros said",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "(For a Reuters live blog on U.S., UK and European",
+          10
+        ],
+        [
+          "(For a Reuters live blog on U.S., UK and European stock markets, click or type LIVE/ in a news windo",
+          8
+        ],
+        [
+          "(For a Reuters live blog on U.S., UK and European stock markets, click LIVE/ or type LIVE/ in a news",
+          2
+        ],
+        [
+          "By Tim Reid, Alexandra Ulmer and Nathan Layne  Sep",
+          2
+        ],
+        [
+          "By Tim Reid, Alexandra Ulmer and Nathan Layne  Sept 22 (Reuters) - Rupert Murdoch's departure as the",
+          2
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "reporting by",
+          0.7079646017699115
+        ],
+        [
+          "editing by",
+          0.6106194690265486
+        ],
+        [
+          "said on",
+          0.30973451327433627
+        ],
+        [
+          "in bengaluru",
+          0.3008849557522124
+        ]
+      ],
+      "distinctive_trigrams": [],
+      "sample_titles": [
+        "UPDATE 1-Amazon CEO says not adding cryptocurrency as payment option anytime soon",
+        "Soros says BlackRock's China investments likely to lose money - WSJ",
+        "Wall St falls as Israel's attack on Iran erodes risk appetite",
+        "UPDATE 3-Abbott's medical device sales recovery aids quarterly profit beat",
+        "IBM to acquire software provider Turbonomic for over $1.5 billion"
+      ]
+    },
+    "yahoo_market_wrap": {
+      "count": 215,
+      "top_prefixes_50": [
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          12
+        ],
+        [
+          "Check out the companies making headlines in midday",
+          6
+        ],
+        [
+          "The S&P 500 Index ($SPX) (SPY) Monday closed up +0",
+          4
+        ],
+        [
+          "The S&P 500 Index ($SPX) (SPY) today is up by +0.1",
+          4
+        ],
+        [
+          "Check out some of the companies making the biggest",
+          4
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          6
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/futures/quotes/$SPX/overview]) (SPY [https://www.b",
+          6
+        ],
+        [
+          "Check out the companies making headlines in midday",
+          3
+        ],
+        [
+          "The S&P 500 Index ($SPX) (SPY) Monday closed up +0",
+          2
+        ],
+        [
+          "The S&P 500 Index ($SPX) (SPY) today is up by +0.1",
+          2
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "closed up",
+          1.3348837209302327
+        ],
+        [
+          "at pm",
+          1.0
+        ],
+        [
+          "pm utc",
+          0.9953488372093023
+        ],
+        [
+          "read more",
+          0.8883720930232558
+        ],
+        [
+          "closed down",
+          0.8883720930232558
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "at pm utc",
+          0.986046511627907
+        ],
+        [
+          "closed up more",
+          0.8558139534883721
+        ],
+        [
+          "the consensus of",
+          0.7953488372093023
+        ],
+        [
+          "is up more",
+          0.7906976744186046
+        ],
+        [
+          "read more here",
+          0.7395348837209302
+        ]
+      ],
+      "sample_titles": [
+        "Earnings Scheduled For January 19, 2021",
+        "Dow Jones Falls As Bitcoin Surges Above $42,000; Nvidia, Tesla Sell Off",
+        "Stocks Set to Open Higher After Mixed Results Tuesday",
+        "Morning Brief: The pandemic remains a part of the economic story",
+        "Better Home surges, Boeing &amp; China, Omnicare: Trending Tickers"
+      ]
+    },
+    "press_release_other": {
+      "count": 800,
+      "top_prefixes_50": [
+        [
+          "Announcement of Periodic Review: Moody's announces",
+          4
+        ],
+        [
+          "Strategic expansion for NCR Voyix in the fuel vert",
+          2
+        ],
+        [
+          "Industry's first commerce orchestration solution e",
+          2
+        ],
+        [
+          "Gen Reveals Cybersecurity Predictions for 2026  TE",
+          2
+        ],
+        [
+          "Renewable natural gas will be sourced from methane",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Announcement of Periodic Review: Moody's announces",
+          2
+        ],
+        [
+          "Strategic expansion for NCR Voyix in the fuel vert",
+          1
+        ],
+        [
+          "Strategic expansion for NCR Voyix in the fuel vertical with the premier provider of fleet cards to s",
+          1
+        ],
+        [
+          "Industry's first commerce orchestration solution e",
+          1
+        ],
+        [
+          "Industry's first commerce orchestration solution enables seamless decisioning across brand and comme",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "forward looking",
+          1.5219023779724656
+        ],
+        [
+          "looking statements",
+          1.3366708385481851
+        ],
+        [
+          "s xnys",
+          0.8085106382978723
+        ],
+        [
+          "xnys trlo",
+          0.8085106382978723
+        ],
+        [
+          "trlo s",
+          0.8072590738423029
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "forward looking statements",
+          1.3366708385481851
+        ],
+        [
+          "s xnys trlo",
+          0.8085106382978723
+        ],
+        [
+          "xnys trlo s",
+          0.8072590738423029
+        ],
+        [
+          "trlo s xnys",
+          0.8072590738423029
+        ],
+        [
+          "for more information",
+          0.5344180225281602
+        ]
+      ],
+      "sample_titles": [
+        "NCR Voyix Partners with Corpay to Enable Fleet Card Acceptance with Voyix Connect",
+        "With Launch of Omni Commerce, Omnicom Brings Connectivity to Fragmented Investment Landscape",
+        "Gen Threat Labs Calls it \"The Year the Internet Outgrows Human Intuition\"",
+        "M&amp;T Bank Corporation Announces First Quarter Results",
+        "Duke Energy announces investment in two new renewable natural gas projects in North Carolina"
+      ]
+    },
+    "other": {
+      "count": 329,
+      "top_prefixes_50": [
+        [
+          "This article is excerpted from Tom Yeung’s Moonsho",
+          8
+        ],
+        [
+          "This story was originally published on Banking Div",
+          6
+        ],
+        [
+          "Looking today at week-over-week shares outstanding",
+          4
+        ],
+        [
+          "During these busy times, it pays to stay on top of",
+          4
+        ],
+        [
+          "Looking at the universe of stocks we cover at Divi",
+          4
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "This article is excerpted from Tom Yeung’s Moonsho",
+          4
+        ],
+        [
+          "This article is excerpted from Tom Yeung’s Moonshot Investor newsletter. To make sure you don’t miss",
+          4
+        ],
+        [
+          "This story was originally published on Banking Div",
+          3
+        ],
+        [
+          "This story was originally published on Banking Dive. To receive daily news and insights, subscribe t",
+          3
+        ],
+        [
+          "Looking today at week-over-week shares outstanding",
+          2
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [],
+      "distinctive_trigrams": [],
+      "sample_titles": [
+        "eBay CEO: ‘I supported the American Rescue Plan–but a little-known provision will hurt millions of Americans who buy and sell used goods online’",
+        "3 Stocks to Buy the Dip Now",
+        "Black Rifle Coffee Company founder: People are hungry for a brand that represents them",
+        "iShares Russell Top 200 Growth ETF Experiences Big Inflow",
+        "Peter Lynch Detailed Fundamental Analysis - DHI"
+      ]
+    },
+    "investing_com": {
+      "count": 91,
+      "top_prefixes_50": [
+        [
+          "By Oliver Gray  Investing.com - U.S. stock futures",
+          10
+        ],
+        [
+          "By Peter Nurse  Investing.com -- Stocks in focus i",
+          6
+        ],
+        [
+          "By Davit Kirakosyan  Investing.com -- Here is your",
+          4
+        ],
+        [
+          "By Liz Moyer  Investing.com -- U.S. stocks tumbled",
+          2
+        ],
+        [
+          "Investing.com -- RBC Capital Markets cut GE Vernov",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "By Oliver Gray  Investing.com - U.S. stock futures",
+          5
+        ],
+        [
+          "By Peter Nurse  Investing.com -- Stocks in focus i",
+          3
+        ],
+        [
+          "By Davit Kirakosyan  Investing.com -- Here is your",
+          2
+        ],
+        [
+          "By Liz Moyer  Investing.com -- U.S. stocks tumbled",
+          1
+        ],
+        [
+          "By Liz Moyer  Investing.com -- U.S. stocks tumbled on Friday after new data showed inflation running",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "investing com",
+          0.9560439560439561
+        ],
+        [
+          "related articles",
+          0.7912087912087912
+        ],
+        [
+          "points or",
+          0.46153846153846156
+        ],
+        [
+          "stock rose",
+          0.4175824175824176
+        ],
+        [
+          "rose after",
+          0.4065934065934066
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "stock rose after",
+          0.32967032967032966
+        ]
+      ],
+      "sample_titles": [
+        "Midday Movers: DocuSign, Stitch Fix, Netflix and More",
+        "GE Vernova’s strong outlook already priced in, RBC says as it downgrades stock",
+        "Roche shares fall after Alzheimer's drug trials fail to meet primary goals",
+        "Dollar on Back Foot as Omicron Optimism Grows",
+        "S&amp;P 500 Turns Negative as Tech, Energy Weigh"
+      ]
+    },
+    "yahoo_analyst_call": {
+      "count": 82,
+      "top_prefixes_50": [
+        [
+          "Step aside Apple and Google, Nvidia may be the new",
+          2
+        ],
+        [
+          "On May 16, Julien Dumoulin Smith from Jefferies co",
+          2
+        ],
+        [
+          "American Express chairman and CEO Stephen Squeri h",
+          2
+        ],
+        [
+          "Tesla (NASDAQ:TSLA) overtakes Lucid in Cantor's EV",
+          2
+        ],
+        [
+          "Five more attorneys general joined a lawsuit again",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Step aside Apple and Google, Nvidia may be the new",
+          1
+        ],
+        [
+          "Step aside Apple and Google, Nvidia may be the new king of tech, one analyst contends.  \"Nvidia may",
+          1
+        ],
+        [
+          "On May 16, Julien Dumoulin Smith from Jefferies co",
+          1
+        ],
+        [
+          "On May 16, Julien Dumoulin Smith from Jefferies commended Vistra Corp.’s (NYSE:VST) recent strategic",
+          1
+        ],
+        [
+          "American Express chairman and CEO Stephen Squeri h",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "the analyst",
+          0.5365853658536586
+        ],
+        [
+          "brian sozzi",
+          0.36585365853658536
+        ]
+      ],
+      "distinctive_trigrams": [],
+      "sample_titles": [
+        "Nvidia is the most important tech company on planet: analyst",
+        "Jefferies’ Bullish Rating on Vistra (VST) Bolstered by Multiple Growth Drivers",
+        "American Express CEO: Cryptocurrencies aren't a currency",
+        "Cantor Sees Tesla Ahead of Lucid",
+        "Alphabet CFO Ruth Porat: Antitrust enforcement threat ‘not new for Google’"
+      ]
+    },
+    "yahoo_stock_bulletin": {
+      "count": 179,
+      "top_prefixes_50": [
+        [
+          "Uncover the latest developments among S&P500 stock",
+          8
+        ],
+        [
+          "What Happened?  A number of stocks jumped in the a",
+          6
+        ],
+        [
+          "What Happened?  A number of stocks fell in the aft",
+          6
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          6
+        ],
+        [
+          "In the latest trading session, Bank of America (BA",
+          4
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Uncover the latest developments among S&P500 stock",
+          4
+        ],
+        [
+          "Uncover the latest developments among S&P500 stocks in today's session. Stay tuned to the S&P500 ind",
+          4
+        ],
+        [
+          "What Happened?  A number of stocks jumped in the a",
+          3
+        ],
+        [
+          "What Happened?  A number of stocks fell in the aft",
+          3
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          3
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "www chartmill",
+          3.0614525139664805
+        ],
+        [
+          "chartmill com",
+          3.0614525139664805
+        ],
+        [
+          "com stock",
+          2.664804469273743
+        ],
+        [
+          "stock quote",
+          2.536312849162011
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "https www chartmill",
+          3.0614525139664805
+        ],
+        [
+          "www chartmill com",
+          3.0614525139664805
+        ],
+        [
+          "chartmill com stock",
+          2.664804469273743
+        ],
+        [
+          "com stock quote",
+          2.536312849162011
+        ],
+        [
+          "the consensus of",
+          0.9441340782122905
+        ]
+      ],
+      "sample_titles": [
+        "Stocks moving in after hours: Roku, Qualcomm, Etsy, Booking, Robinhood",
+        "Bank of America (BAC) Gains As Market Dips: What You Should Know",
+        "HP Shares Tumble After Lowering Guidance on Soft PC and Printer Demand",
+        "Stocks making the biggest moves after hours: AppLovin, Arm Holdings, Flutter Entertainment, Fortinet and more",
+        "Key Apple Supplier Clocks 48% Sales Growth In Q3"
+      ]
+    },
+    "bloomberg": {
+      "count": 142,
+      "top_prefixes_50": [
+        [
+          "(Bloomberg) -- International Business Machines Cor",
+          4
+        ],
+        [
+          "The three-part test to become a chartered financia",
+          2
+        ],
+        [
+          "(Bloomberg) -- Samsung Electronics Co.’s chip unit",
+          2
+        ],
+        [
+          "(Bloomberg) -- Man Group Plc is open to making acq",
+          2
+        ],
+        [
+          "Visa said on Tuesday that it would begin to send U",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "(Bloomberg) -- International Business Machines Cor",
+          2
+        ],
+        [
+          "The three-part test to become a chartered financia",
+          1
+        ],
+        [
+          "The three-part test to become a chartered financial analyst is widely viewed as one of the hardest e",
+          1
+        ],
+        [
+          "(Bloomberg) -- Samsung Electronics Co.’s chip unit",
+          1
+        ],
+        [
+          "(Bloomberg) -- Samsung Electronics Co.’s chip unit plunged a far bigger-than-expected 94% in the Jun",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "most read",
+          1.0633802816901408
+        ],
+        [
+          "read from",
+          1.0633802816901408
+        ],
+        [
+          "from bloomberg",
+          1.0633802816901408
+        ],
+        [
+          "bloomberg l",
+          0.6619718309859155
+        ],
+        [
+          "l p",
+          0.6619718309859155
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "most read from",
+          1.0633802816901408
+        ],
+        [
+          "read from bloomberg",
+          1.0633802816901408
+        ],
+        [
+          "bloomberg l p",
+          0.6619718309859155
+        ],
+        [
+          "from bloomberg businessweek",
+          0.5352112676056338
+        ]
+      ],
+      "sample_titles": [
+        "The Robots Are Coming: Artificial Intelligence Can Now Pass One of Finance’s Hardest Exams",
+        "Samsung Chip Profit Tumbles While Investors Seek Bottom",
+        "Wells Fargo and Centerbridge Launch $5 Billion Private-Credit Fund",
+        "Man Group Considers More Acquisitions in Private Credit Push",
+        "Visa to send stablecoin USDC over Solana to help pay merchants in crypto"
+      ]
+    },
+    "insider_monkey": {
+      "count": 71,
+      "top_prefixes_50": [
+        [
+          "The latest 13F reporting period has come and gone,",
+          32
+        ],
+        [
+          "The Insider Monkey team has completed processing t",
+          12
+        ],
+        [
+          "We at Insider Monkey have gone over 873 13F filing",
+          8
+        ],
+        [
+          "The 800+ hedge funds and famous money managers tra",
+          8
+        ],
+        [
+          "A whopping number of 13F filings filed with U.S. S",
+          6
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "The latest 13F reporting period has come and gone,",
+          16
+        ],
+        [
+          "The latest 13F reporting period has come and gone, and Insider Monkey is again at the forefront when",
+          12
+        ],
+        [
+          "The Insider Monkey team has completed processing t",
+          6
+        ],
+        [
+          "Insider Monkey has processed numerous 13F filings",
+          5
+        ],
+        [
+          "Insider Monkey has processed numerous 13F filings of hedge funds and successful value investors to c",
+          5
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "among hedge",
+          2.211267605633803
+        ],
+        [
+          "popular stocks",
+          2.112676056338028
+        ],
+        [
+          "stocks among",
+          2.112676056338028
+        ],
+        [
+          "at insider",
+          2.084507042253521
+        ],
+        [
+          "by percentage",
+          1.9014084507042253
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "among hedge funds",
+          2.211267605633803
+        ],
+        [
+          "stocks among hedge",
+          2.112676056338028
+        ],
+        [
+          "most popular stocks",
+          2.0985915492957745
+        ],
+        [
+          "popular stocks among",
+          2.0985915492957745
+        ],
+        [
+          "at insider monkey",
+          2.084507042253521
+        ]
+      ],
+      "sample_titles": [
+        "Do Hedge Funds Love Zebra Technologies Corporation (ZBRA)?",
+        "Here is What Hedge Funds Think About JPMorgan Chase &amp; Co. (JPM)",
+        "Here is What Hedge Funds Think About Telefonaktiebolaget LM Ericsson (publ) (ERIC)",
+        "Was The Smart Money Right About Lennar (LEN)?",
+        "Did Hedge Funds Catch A Break With KeyCorp (KEY)?"
+      ]
+    },
+    "simplywallst": {
+      "count": 32,
+      "top_prefixes_50": [
+        [
+          "Regular readers will know that we love our dividen",
+          6
+        ],
+        [
+          "Key Insights  Given the large stake in the stock b",
+          4
+        ],
+        [
+          "Key Insights  Institutions' substantial holdings i",
+          4
+        ],
+        [
+          "Welltower (WELL) has been trading actively this mo",
+          2
+        ],
+        [
+          "The investors in C.H. Robinson Worldwide, Inc.'s (",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Regular readers will know that we love our dividen",
+          3
+        ],
+        [
+          "Regular readers will know that we love our dividends at Simply Wall St, which is why it's exciting t",
+          3
+        ],
+        [
+          "Key Insights  Given the large stake in the stock b",
+          2
+        ],
+        [
+          "Key Insights  Institutions' substantial holdings i",
+          2
+        ],
+        [
+          "Welltower (WELL) has been trading actively this mo",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "latest price",
+          1.0625
+        ],
+        [
+          "sell any",
+          1.03125
+        ],
+        [
+          "have feedback",
+          1.0
+        ],
+        [
+          "feedback on",
+          1.0
+        ],
+        [
+          "article concerned",
+          1.0
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "the latest price",
+          1.0625
+        ],
+        [
+          "on this article",
+          1.03125
+        ],
+        [
+          "have feedback on",
+          1.0
+        ],
+        [
+          "feedback on this",
+          1.0
+        ],
+        [
+          "this article concerned",
+          1.0
+        ]
+      ],
+      "sample_titles": [
+        "Dividend Investors: Don't Be Too Quick To Buy Invesco Ltd. (NYSE:IVZ) For Its Upcoming Dividend",
+        "Evaluating Welltower (WELL): Does Recent Momentum Reflect Fair Value?",
+        "C.H. Robinson Worldwide, Inc. (NASDAQ:CHRW) Analysts Are Pretty Bullish On The Stock After Recent Results",
+        "What Type Of Shareholders Own The Most Number of Gilead Sciences, Inc. (NASDAQ:GILD) Shares?",
+        "Atmos Energy (ATO): Evaluating Valuation Following Recent Performance and Legislative Developments"
+      ]
+    },
+    "barrons": {
+      "count": 31,
+      "top_prefixes_50": [
+        [
+          "Deutsche Post DHL stock is down 45% this year, but",
+          2
+        ],
+        [
+          "(JNJ) said it expects $2.5 billion in sales of its",
+          2
+        ],
+        [
+          "Berkshire Hathaway CEO Warren Buffett has steadily",
+          2
+        ],
+        [
+          "November is nearly halfway over—and investors have",
+          2
+        ],
+        [
+          "The charts of the footwear and apparel giant are n",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Customers under pressure from high interest rates",
+          1
+        ],
+        [
+          "Customers under pressure from high interest rates and inflated prices are spending less at the chain",
+          1
+        ],
+        [
+          "Jim Moylan, who is retiring in August, is helping",
+          1
+        ],
+        [
+          "Jim Moylan, who is retiring in August, is helping the networking equipment maker respond to tariffs,",
+          1
+        ],
+        [
+          "Deutsche Post DHL stock is down 45% this year, but",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "reading view",
+          0.3225806451612903
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "continue reading view",
+          0.3225806451612903
+        ],
+        [
+          "reading view comments",
+          0.3225806451612903
+        ]
+      ],
+      "sample_titles": [
+        "Analysts Sour on Dollar Tree Stock. Earnings Were ‘Our Final Straw.’",
+        "Ciena CFO’s Last Act Before Retiring After 17 Years: Navigating a Trade War",
+        "FedEx’s Economic Warning Sank This Stock. Now It Could Be an Opportunity.",
+        "EA Stock Rises on Strong Earnings. FIFA Scores for Game Maker.",
+        "J&amp;J Stock Rises on Earnings.  Study Adds to Doubts Over Its Vaccine’s Efficacy."
+      ]
+    },
+    "ap": {
+      "count": 20,
+      "top_prefixes_50": [
+        [
+          "NEW YORK (AP) — prices for the Nasdaq composite, N",
+          6
+        ],
+        [
+          "OMAHA, Neb. (AP) — The latest rail layoffs this we",
+          2
+        ],
+        [
+          "Nucor, the nation's biggest steel producer, has se",
+          2
+        ],
+        [
+          "LOUISVILLE, Ky. (AP) — LOUISVILLE, Ky. (AP) — Brow",
+          2
+        ],
+        [
+          "HOUSTON (AP) — HOUSTON (AP) — Crown Castle Interna",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "NEW YORK (AP) — prices for the Nasdaq composite, N",
+          3
+        ],
+        [
+          "NEW YORK (AP) — prices for the Nasdaq composite, NYSE and NYSE American listed most active stocks.",
+          3
+        ],
+        [
+          "OMAHA, Neb. (AP) — The latest rail layoffs this we",
+          1
+        ],
+        [
+          "OMAHA, Neb. (AP) — The latest rail layoffs this week, combined with an investment fund's ongoing cam",
+          1
+        ],
+        [
+          "Nucor, the nation's biggest steel producer, has se",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "gold corp",
+          1.25
+        ],
+        [
+          "therapeutics inc",
+          0.95
+        ],
+        [
+          "com ap",
+          0.9
+        ],
+        [
+          "energy corp",
+          0.8
+        ],
+        [
+          "share the",
+          0.75
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "per share the",
+          0.75
+        ],
+        [
+          "analysts surveyed by",
+          0.65
+        ],
+        [
+          "surveyed by zacks",
+          0.65
+        ],
+        [
+          "most active stocks",
+          0.6
+        ],
+        [
+          "said it had",
+          0.55
+        ]
+      ],
+      "sample_titles": [
+        "Latest freight railroad layoffs and Wall Street pressure renew concerns about safety and service",
+        "Nucor picks West Virginia for big state-of-the-art steelmaking plant",
+        "Brown-Forman: Fiscal Q3 Earnings Snapshot",
+        "BC-Most Active Stocks",
+        "Crown Castle: Q1 Earnings Snapshot"
+      ]
+    },
+    "benzinga": {
+      "count": 24,
+      "top_prefixes_50": [
+        [
+          "Benzinga and Yahoo Finance LLC may earn commission",
+          8
+        ],
+        [
+          "[YouTube App icon channel on iPhone XR] 5./15 WEST",
+          2
+        ],
+        [
+          "Upgrades  For Prudential Financial Inc (NYSE: PRU)",
+          2
+        ],
+        [
+          "Apple, Inc (NASDAQ: AAPL) was rising about 1.6% on",
+          2
+        ],
+        [
+          "Ross Stores Inc (NASDAQ: ROST) reported first-quar",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Benzinga and Yahoo Finance LLC may earn commission",
+          4
+        ],
+        [
+          "Benzinga and Yahoo Finance LLC may earn commission or revenue on some items through the links below.",
+          4
+        ],
+        [
+          "[YouTube App icon channel on iPhone XR] 5./15 WEST",
+          1
+        ],
+        [
+          "[YouTube App icon channel on iPhone XR] 5./15 WEST  Google (NASDAQ:GOOG [https://seekingalpha.com/sy",
+          1
+        ],
+        [
+          "Upgrades  For Prudential Financial Inc (NYSE: PRU)",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "high of",
+          4.666666666666667
+        ],
+        [
+          "week high",
+          4.583333333333333
+        ],
+        [
+          "week low",
+          4.583333333333333
+        ],
+        [
+          "low of",
+          4.583333333333333
+        ],
+        [
+          "last trading",
+          4.583333333333333
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "high of and",
+          4.625
+        ],
+        [
+          "a week high",
+          4.583333333333333
+        ],
+        [
+          "week high of",
+          4.583333333333333
+        ],
+        [
+          "and a week",
+          4.583333333333333
+        ],
+        [
+          "a week low",
+          4.583333333333333
+        ]
+      ],
+      "sample_titles": [
+        "Google reportedly cutting budget in Smart TV biz; looking to bolster YouTube team",
+        "Benzinga's Top Upgrades, Downgrades For December 8, 2020",
+        "Is Apple Headed For A Blue-Sky Run? The iStock Trades In These Bullish Patterns Following Fed Call On Rates",
+        "Ross Stores Posts Mixed Q1 Earnings, Warns Inflationary Pressures Could Hit Customer Spending",
+        "Trump's Tariffs Hit Mattel's Barbies: Will Americans Pay 'A Couple Of Bucks More' As President Predicts?"
+      ]
+    },
+    "seeking_alpha": {
+      "count": 53,
+      "top_prefixes_50": [
+        [
+          "Sundry Photography  Lowe's Companies (NYSE:LOW [ht",
+          2
+        ],
+        [
+          "[Short Selling is refer to an investor or trader s",
+          2
+        ],
+        [
+          "[Financial business growth concept The businessman",
+          2
+        ],
+        [
+          "[Customer paying for coffee at bicycle coffee shop",
+          2
+        ],
+        [
+          "[Wall Street in New York City] JaysonPhotography/i",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "[Closeup of computer keyboard with short and long",
+          2
+        ],
+        [
+          "[Closeup of computer keyboard with short and long buttons. Stock market, Trading concept.] Sashkinw",
+          2
+        ],
+        [
+          "Sundry Photography  Lowe's Companies (NYSE:LOW [ht",
+          1
+        ],
+        [
+          "Sundry Photography  Lowe's Companies (NYSE:LOW [https://seekingalpha.com/symbol/LOW]) announced that",
+          1
+        ],
+        [
+          "[Short Selling is refer to an investor or trader s",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "com article",
+          2.943396226415094
+        ],
+        [
+          "short interest",
+          1.0377358490566038
+        ],
+        [
+          "quant rating",
+          1.0377358490566038
+        ],
+        [
+          "quant ratings",
+          0.9811320754716981
+        ],
+        [
+          "more on",
+          0.8867924528301887
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "seekingalpha com article",
+          2.943396226415094
+        ],
+        [
+          "seekingalpha com news",
+          2.9056603773584904
+        ],
+        [
+          "ratings quant ratings",
+          0.8490566037735849
+        ],
+        [
+          "short interest as",
+          0.8301886792452831
+        ],
+        [
+          "interest as a",
+          0.7924528301886793
+        ]
+      ],
+      "sample_titles": [
+        "Lowe's turns to MrBeast and a new creator network to connect with Millennials and Gen Z",
+        "Short sellers boost bets against material stocks in November",
+        "Here are the major earnings before the open Monday",
+        "Hargreaves Lansdown’s three stocks for the long term",
+        "Synchrony, Bread, Ally upgraded, Affirm, PROG cut at BTIG"
+      ]
+    },
+    "mt_newswires": {
+      "count": 43,
+      "top_prefixes_50": [
+        [
+          "US benchmark equity indexes were lower intraday as",
+          4
+        ],
+        [
+          "The broad market exchange-traded fund SPDR S&P 500",
+          4
+        ],
+        [
+          "Ulta Beauty (ULTA) is expected to report another s",
+          2
+        ],
+        [
+          "US equity indexes were lower ahead of the close on",
+          2
+        ],
+        [
+          "Consumer stocks were mixed Wednesday afternoon wit",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "US benchmark equity indexes were lower intraday as",
+          2
+        ],
+        [
+          "The broad market exchange-traded fund SPDR S&P 500",
+          2
+        ],
+        [
+          "Ulta Beauty (ULTA) is expected to report another s",
+          1
+        ],
+        [
+          "Ulta Beauty (ULTA) is expected to report another solid quarter but will likely issue a conservative",
+          1
+        ],
+        [
+          "US equity indexes were lower ahead of the close on",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "premium upgrade",
+          1.0
+        ],
+        [
+          "upgrade to",
+          1.0
+        ],
+        [
+          "this mt",
+          1.0
+        ],
+        [
+          "mt newswires",
+          1.0
+        ],
+        [
+          "newswires article",
+          1.0
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "premium upgrade to",
+          1.0
+        ],
+        [
+          "upgrade to read",
+          1.0
+        ],
+        [
+          "read this mt",
+          1.0
+        ],
+        [
+          "this mt newswires",
+          1.0
+        ],
+        [
+          "mt newswires article",
+          1.0
+        ]
+      ],
+      "sample_titles": [
+        "Ulta Beauty Poised for Solid Fiscal Q3, Conservative Guidance Update, Oppenheimer Says",
+        "US Equity Indexes Lower Ahead of the Fed's Rate-Cut Decision",
+        "Sector Update: Consumer Stocks Mixed in Afternoon Trading",
+        "Equity Markets Lower After July Services Sector Data, June Trade Deficit",
+        "Sector Update: Consumer Stocks Mixed in Late Afternoon Trading"
+      ]
+    },
+    "marketwatch": {
+      "count": 66,
+      "top_prefixes_50": [
+        [
+          "The Dow Jones index wavered ahead of the Fed inter",
+          2
+        ],
+        [
+          "Target, which closed 9 stores in major cities last",
+          2
+        ],
+        [
+          "Ares Management lifted its stake in outdoor-advert",
+          2
+        ],
+        [
+          "Despite significant outflows. T. Rowe Price's prof",
+          2
+        ],
+        [
+          "Edison International (EIX) stock fell nearly 13% W",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "The Dow Jones index wavered ahead of the Fed inter",
+          1
+        ],
+        [
+          "The Dow Jones index wavered ahead of the Fed interest rate decision. Nvidia stock rallied on a price",
+          1
+        ],
+        [
+          "Shares of Nio Inc. sank to the lowest prices seen",
+          1
+        ],
+        [
+          "Shares of Nio Inc. sank to the lowest prices seen in more than two years, to disappoint not only bul",
+          1
+        ],
+        [
+          "Stocks briefly bounced higher Wednesday, but then",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [],
+      "distinctive_trigrams": [],
+      "sample_titles": [
+        "Stock Market Today: Dow Dips As Fed Rate Decision, Powell Comments Loom; Software Giant Dives On Deal News (Live Coverage)",
+        "Nio shorts may have covered too soon, as EV maker’s stock sinks to more than 2-year low",
+        "U.S. stocks trade lower, erase brief boost after Fed opts to keep rates near zero, again",
+        "Target soars as earnings blast forecasts, but same-store sales slide, theft increases",
+        "Clear Channel Outdoor, Babcock &amp; Wilcox See Activist Action"
+      ]
+    },
+    "earnings_transcript": {
+      "count": 41,
+      "top_prefixes_50": [
+        [
+          "Year to date, we've completed bulk purchases for t",
+          2
+        ],
+        [
+          "Earnings Call Insights: C.H. Robinson Worldwide, I",
+          2
+        ],
+        [
+          "Today's conference call may include forward-lookin",
+          2
+        ],
+        [
+          "O'Reilly Automotive, Inc. (NASDAQ:ORLY) Q3 2023 Ea",
+          2
+        ],
+        [
+          "CF Industries Holdings, Inc. (NYSE:CF) Q4 2022 Ear",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Year to date, we've completed bulk purchases for t",
+          1
+        ],
+        [
+          "Year to date, we've completed bulk purchases for the rights to service of approximately $13 billion",
+          1
+        ],
+        [
+          "Earnings Call Insights: C.H. Robinson Worldwide, I",
+          1
+        ],
+        [
+          "Earnings Call Insights: C.H. Robinson Worldwide, Inc. (CHRW) Q2 2025  MANAGEMENT VIEW   \t* CEO David",
+          1
+        ],
+        [
+          "Today's conference call may include forward-lookin",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "we expect",
+          5.073170731707317
+        ],
+        [
+          "and then",
+          4.560975609756097
+        ],
+        [
+          "a little",
+          4.463414634146342
+        ],
+        [
+          "and i",
+          3.975609756097561
+        ],
+        [
+          "i would",
+          3.902439024390244
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "we continue to",
+          3.5121951219512195
+        ],
+        [
+          "a little bit",
+          3.2439024390243905
+        ],
+        [
+          "that we re",
+          2.7804878048780486
+        ],
+        [
+          "and we re",
+          2.3658536585365852
+        ],
+        [
+          "re going to",
+          2.1951219512195124
+        ]
+      ],
+      "sample_titles": [
+        "Regions Financial (RF) Q2 2022 Earnings Call Transcript",
+        "C.H. Robinson lowers 2025 expense guidance while expanding AI-driven productivity gains",
+        "Lennar (LEN) Q2 2022 Earnings Call Transcript",
+        "O’Reilly Automotive, Inc. (NASDAQ:ORLY) Q3 2023 Earnings Call Transcript",
+        "CF Industries Holdings, Inc. (NYSE:CF) Q4 2022 Earnings Call Transcript"
+      ]
+    },
+    "wsj": {
+      "count": 32,
+      "top_prefixes_50": [
+        [
+          "Occidental is in talks to buy closely held CrownRo",
+          2
+        ],
+        [
+          "Softbank Group Corp (OTC: SFTBF) (OTC: SFTBY) Arm-",
+          2
+        ],
+        [
+          "Elliott Investment Management said Tuesday it plan",
+          2
+        ],
+        [
+          "Chevron’s latest acquisition shows that the best d",
+          2
+        ],
+        [
+          "Shares of two major Covid-19 vaccine makers declin",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Occidental is in talks to buy closely held CrownRo",
+          1
+        ],
+        [
+          "Occidental is in talks to buy closely held CrownRock, an operator in the West Texas Permian Basin, a",
+          1
+        ],
+        [
+          "Softbank Group Corp (OTC: SFTBF) (OTC: SFTBY) Arm-",
+          1
+        ],
+        [
+          "Softbank Group Corp (OTC: SFTBF) (OTC: SFTBY) Arm-based chips won market share in PCs and rivaled In",
+          1
+        ],
+        [
+          "Elliott Investment Management said Tuesday it plan",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "reading view",
+          0.34375
+        ],
+        [
+          "the wall",
+          0.3125
+        ],
+        [
+          "street journal",
+          0.3125
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "continue reading view",
+          0.34375
+        ],
+        [
+          "reading view comments",
+          0.34375
+        ],
+        [
+          "the wall street",
+          0.3125
+        ],
+        [
+          "wall street journal",
+          0.3125
+        ]
+      ],
+      "sample_titles": [
+        "Occidental Joins M&amp;A Race With CrownRock Talks. It Follows Exxon, Chevron Moves.",
+        "Intel Faces Heat From Arm's Growing Popularity With Cloud Computing Giants Like Amazon and Microsoft",
+        "Elliott to Launch Proxy Fight at Southwest Airlines",
+        "Why Big Oil Likes Small Deals",
+        "Moderna, Novavax Shares Fall on News FDA Plans to Tighten Vaccine Approvals"
+      ]
+    },
+    "ft": {
+      "count": 15,
+      "top_prefixes_50": [
+        [
+          "Lyft predicted drivers will ditch food delivery ap",
+          2
+        ],
+        [
+          "The Pentagon has split a six-year $9 billion contr",
+          2
+        ],
+        [
+          "Ford will begin selling the electric F-150 Lightni",
+          2
+        ],
+        [
+          "New US Securities and Exchange Commission chair Ga",
+          2
+        ],
+        [
+          "Biogen’s decision to price its newly approved Alzh",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "Lyft predicted drivers will ditch food delivery ap",
+          1
+        ],
+        [
+          "Lyft predicted drivers will ditch food delivery apps and come back to ride-sharing as passenger dema",
+          1
+        ],
+        [
+          "The Pentagon has split a six-year $9 billion contr",
+          1
+        ],
+        [
+          "The Pentagon has split a six-year $9 billion contract for cloud computing services among Alphabet In",
+          1
+        ],
+        [
+          "Ford will begin selling the electric F-150 Lightni",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "nu quantum",
+          0.4
+        ],
+        [
+          "transdigm s",
+          0.4
+        ],
+        [
+          "parker s",
+          0.3333333333333333
+        ],
+        [
+          "s offer",
+          0.3333333333333333
+        ]
+      ],
+      "distinctive_trigrams": [],
+      "sample_titles": [
+        "Lyft woos drivers with promise of ‘meaningful interactions’",
+        "Google, Oracle, Amazon And Microsoft Jointly Win US DoD Cloud Contract Worth $9B",
+        "Ford’s electric F-150 Lightning pick-up to go on sale in Norway",
+        "Bitcoin hits one-week low as SEC calls for more power over crypto",
+        "Biogen’s $56,000-a-year Alzheimer’s drug reignites US debate over costs"
+      ]
+    },
+    "barchart": {
+      "count": 25,
+      "top_prefixes_50": [
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          26
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          10
+        ],
+        [
+          "September S&P 500 E-Mini futures (ESU25) are up +0",
+          2
+        ],
+        [
+          "Looking today at week-over-week shares outstanding",
+          2
+        ],
+        [
+          "December S&P 500 E-Mini futures (ESZ25) are trendi",
+          2
+        ]
+      ],
+      "top_prefixes_100": [
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          13
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/futures/quotes/$SPX/overview]) (SPY [https://www.b",
+          13
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/",
+          5
+        ],
+        [
+          "The S&P 500 Index ($SPX [https://www.barchart.com/futures/quotes/$SPX/overview]) (SPY [https://www.b",
+          5
+        ],
+        [
+          "September S&P 500 E-Mini futures (ESU25) are up +0",
+          1
+        ]
+      ],
+      "longest_common_prefix": "",
+      "distinctive_bigrams": [
+        [
+          "com stocks",
+          19.4
+        ],
+        [
+          "stocks quotes",
+          19.36
+        ],
+        [
+          "overview is",
+          8.08
+        ],
+        [
+          "overview closed",
+          4.56
+        ],
+        [
+          "com futures",
+          4.36
+        ]
+      ],
+      "distinctive_trigrams": [
+        [
+          "barchart com stocks",
+          19.4
+        ],
+        [
+          "com stocks quotes",
+          19.36
+        ],
+        [
+          "overview is up",
+          4.88
+        ],
+        [
+          "barchart com futures",
+          4.36
+        ],
+        [
+          "com futures quotes",
+          4.36
+        ]
+      ],
+      "sample_titles": [
+        "Stocks Trim Losses as Drug Makers Rally",
+        "Stocks Mixed as Markets Monitor US-China Trade Talks",
+        "Trade Jitters Weigh on Stocks",
+        "Stocks Settle Higher on Signs of Progress in US-China Trade Talks",
+        "Stocks Supported by Strong Q3 Earnings Results"
+      ]
+    }
+  },
+  "total_classified": 4962
+}

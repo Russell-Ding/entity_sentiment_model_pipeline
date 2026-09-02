@@ -1,0 +1,57 @@
+• I'll review the study. First, reading the findings and the source files.
+
+• RESULTS.md is already updated post-MOC follow-up. Now reading the source code.
+
+• Now let me check for the feasible-IC and volatility scripts (RESULTS references `panel_feasible.parquet`, built today), plus the outputs.
+
+• All verification done. I have everything I need — here's the review.
+
+  ---
+
+  ## (1) Verdict
+
+  The study's *updated* conclusion is correct and the self-diagnosis is genuine, not cosmetic: I independently re-ran the key numbers and the original "predictive content" was overwhelmingly look-ahead. The single most telling test — one the authors didn't run — is to take the **original** panel and simply drop the (ticker, date) pairs that the feasibility rule reassigns: the 1-day IC collapses from +0.0204 (t 3.65) to **+0.0037 (t 0.68)**, i.e. >80% of the headline IC came from the ~25% after-hours-assigned subset. Claim (1) in your brief should be considered retracted (RESULTS.md already does this); claim (2)/(3) survive scrutiny, with one mislabeled sub-test. The one live result — sentiment magnitude predicting next-day volatility — held up when I added a control the authors didn't use (same-day |return|): partial rank-IC +0.019, NW t 3.7, and it's stable by year 2021–2025. Methodologically the code is unusually careful for a first pass (calendar-aware forward returns, explicit execution lag, NW inference, costs on turnover), but the two decisive follow-up tables were computed ad hoc — no committed script builds `panel_feasible.parquet` — and I could not reproduce the exact feasible-IC numbers from the artifacts on disk.
+
+  ## (2) Issues found, ranked
+
+  **Critical (change what the study can claim)**
+
+  1. **The IC/FM/event-study evidence was look-ahead-tainted — confirmed independently, and worse than stated.** `build_panel.py` inherits `trade_date` from the inference pipeline, which assigns by publication *date* (a 6pm Monday article → Monday, whose close precedes publication). `fwd_ret_1` (close[t]→close[t+1], `build_panel.py:146`) then contains the market's own reaction to the article for the pushed subset. My restriction test (above) attributes >80% of the original IC to this. RESULTS.md Follow-up 2 acknowledges it, but Sections 2–4 still carry the contaminated tables as the "headline" — the FM t=6.7 and event-study t=10.1 were **never re-run on the feasible panel** (only IC was). Until they are, the record is half-corrected.
+  2. **The "late news, next-open" test enters one session too late.** In `moc_feasibility.py:126-152`, `late_panel` dates are set to `eff` = the first *close* by which the news is knowable (e.g. Tuesday for Monday-6pm news), and `run_backtest` enters at the open of the session *after* the signal day (`backtest_ls.py:128-129`) — i.e. Wednesday's open, ~2 sessions after publication. The "after-hours news traded at next open ≈ 0 (Sharpe −0.18)" row actually tests next-next-open. The correct feasible entry (Tuesday open) is exactly what the *original* panel + `entry='open'` gives for pushed rows — and that also yields ≈0 (day-1 open→close spread −4.9bps; Sharpe −0.72 at H=1), so the conclusion stands, but the labeled evidence for it is wrong.
+  3. **Reproducibility gap on the decisive results.** No script in `signal_strategy/src/` builds `panel_feasible.parquet` (dated Aug 9) or computes the feasible-IC and vol-IC tables. Recomputing feasible IC from the parquet with the study's own `ic_analysis` machinery, I get −0.0006 (t −0.10), not the reported −0.0067 (t −1.39). Same verdict (≈0 everywhere), but the exact numbers in RESULTS.md are not regenerable from the repo. For a study whose entire credibility rests on the correction, the correction must be a committed, runnable script.
+
+  **Medium (weaken specific numbers, not the sign of the conclusion)**
+
+  4. **Event-study t≈10 assumes independent events** (`event_study.py:113`: SE from per-event variance). News events cluster by ticker (multi-day runs) and by date (macro days) — CAR paths overlap heavily. Date-clustered or portfolio-series HAC inference would likely cut t by 2–3×. (Also flagged by the prior Codex review; still unfixed.)
+  5. **"size" control is same-day dollar volume** (`build_panel.py:137-138`, used in `fama_macbeth.py` PREDICTORS). This is post-treatment: news-day volume *reacts to the news*, so the control can absorb part of the sentiment effect and induces collider-flavored bias; it's also liquidity, not size. Lag it (t−1 dollar volume, or market cap).
+  6. **Overnight-gap decomposition mixes bases** (`backtest_ls.py:52-54, 210`): `c2c` is computed from *adjusted* close, `oc` from *raw* open/close, and `overnight = c2c − oc` combines them additively. On ex-dividend days the "+40.9bps uncapturable gap" is polluted by the adjustment; returns should be combined multiplicatively. This is the study's central quantity — worth redoing cleanly even though the qualitative story won't change.
+  7. **Missing bars silently drop leg weights** (`backtest_ls.py:113-120`): a NaN return just omits `wi·rr` with no renormalization, breaking dollar-neutrality precisely when missingness is informative (halts/suspensions after extreme news — concentrated in the short leg).
+  8. **Fixed NW lag 5 for 20-day overlapping FM slopes** (`fama_macbeth.py:24`): 20-day overlapping returns induce MA(19)+ autocorrelation; lag 5 understates SEs at h=20. Directionally harmless (makes the null look more insignificant), but it's wrong.
+  9. **Multiple-testing / OOS discipline is weak, and it matters for the surviving result.** H=8 is an argmax over 21 taus picked in-sample (`event_study.py:116`); the sweep then varies H×entry×weighting×cost; the 70/30 split is a report, not a holdout. For the *vol* result, the number of variants tried before landing on "residualized on vol21" is unknown (no script) — that result now needs the discipline the directional one lacked.
+
+  **Low (bounded impact)**
+
+  10. **Half-days ignored in the 15:45 rule** (`moc_feasibility.py:82`): on 1pm-close days, 13:00–15:45 publications are marked same-close-knowable but the market was closed. ~2 days/yr; inflates feasible IC trivially.
+  11. **Forced quintiles on thin cross-sections** (`backtest_ls.py:72`): min 10 names → 2 names per leg; `rank(method="first")` breaks ties by row order.
+  12. **Baseline "paper" comparison is look-ahead on both sides** (`build_panel.py:218`: `searchsorted(pub_date)` rolls by date, same bug). "v2.1 beats EODHD polarity" is therefore look-ahead-on-look-ahead — probably directionally fine, formally unestablished.
+  13. **Timezone handling is actually OK — verified.** All ~60k sampled `date` fields are tz-aware ISO; `astimezone(ET)` with `zoneinfo` handles DST. Hour histogram shows the expected 6–9am pre-market block and the 16h earnings spike; ~28% fall after 15:45 ET, consistent with the reported ~25%.
+  14. **Regime check — done, reassuring and mildly interesting:** the original (contaminated) IC is positive in *every* year 2020–2025, so the contamination isn't a COVID artifact. The feasible IC is ≈0/negative every year except 2020 (+0.075, t 2.07, n=104 — thin early cross-sections; don't over-read). Notably, feasible IC is significantly **negative** in 2023 and 2024 (t≈−2 each) — a hint of post-news reversal that the pooled t=−0.1 averages away.
+
+  ## (3) What I'd test next (all feasible with data already in the repo)
+
+  1. **Commit the correction.** A `feasible_analysis.py` that builds `panel_feasible.parquet` and re-runs IC **and FM and the event study** on it (the code is a one-line panel swap). Retire the contaminated Sections 2–4 numbers from headline status entirely.
+  2. **The genuinely untested feasible channel: pre-market news traded at the same day's open.** Hours 5–9 ET are ~28% of articles and are knowable before 9:30. No run in the study tests "signal at 9:00 → enter at that session's open → exit close/next open." The current machinery can't express it (it only enters the session *after* the signal day), but with timestamped news + OHLC it's a small extension: split articles into pre-market vs intraday vs after-hours and test each at its first feasible execution point. This is the last daily-bar stone unturned, and the prior is weak but not zero.
+  3. **Fix and rerun the late-news test** at the correct first open (subset original panel to pushed ticker-days, `entry='open'`), so the "priced by the open" claim rests on a correctly-labeled test.
+  4. **Harden the vol result before believing it:** (a) control a GARCH(1,1)-style forecast and an earnings-day dummy, not just vol21 — news intensity may be proxying the earnings calendar; (b) split the target into |close→open| vs |open→close| to see *where* the predicted vol lands — if it's mostly the overnight component adjacent to the news, it's measurement again; (c) 5-day-ahead vol; (d) freeze the spec and report a true OOS. My quick check says it survives same-day |ret| control (t 3.7), so it's worth this effort.
+  5. **Formalize the 2023–24 reversal hint**: pooled feasible IC hides two years of t≈−2. A short-horizon news-conditioned reversal test is one groupby away; if real, it's more tradable than momentum on news ever was (reversal persists past the open).
+  6. **Timestamp-quality audit**: ~7k articles have ET hours 0–5; sample them to confirm EODHD `date` is publication time, not crawl time — if it's crawl time in places, even the feasible panel has residual mis-assignment.
+
+  ## (4) Non-trading uses, prioritized
+
+  1. **Volatility / risk overlay (top priority — the only surviving predictive result).** Feed `|sent_mw|`, `sent_disp`, `n_articles` into vol forecasting, position sizing, and earnings-window risk flags. Non-directional signals don't compete on news latency, so the latency kill doesn't apply. Gate on the hardening tests above.
+  2. **Overnight P&L attribution.** The study proved the model aligns with the overnight reaction (+40.9bps Q5–Q1 gap alignment). Flip the liability into the product: attribute a portfolio's overnight gap to specific entities/articles with mention-weighted contributions. Genuinely useful to PMs and risk teams, and daily-bar data is sufficient.
+  3. **News triage and alerting on held names.** Sentiment shocks, deterioration trends, corroboration weighting (multi-article ticker-days carry more signal — the study's own intensity split). Latency-insensitive if framed as "review queue," not "trade signal."
+  4. **Model-QA flywheel.** The panel already contains model sentiment, EODHD polarity, and realized reaction per article-day; divergences between the three mine hard/mislabeled articles for the next retrain — a concrete use of this study's byproducts for the parent project.
+  5. **Slow fundamental features (lower priority).** Weekly/monthly sentiment level, dispersion, and negative-tail frequency as inputs to slower models. Must be re-tested point-in-time, and note the feasible IC is ≈0 even at 20d — so pitch these as *features*, not signals.
+  6. Explicitly **deprioritize**: any directional daily-granularity strategy, including MOC and next-open variants — the study tested every daily-bar entry point correctly except pre-market/same-open, and the feasible signal shows no forecast content even at the close.
+

@@ -1,0 +1,131 @@
+================================================================================
+  END-TO-END PIPELINE EVALUATION  --  V2
+  Checkpoint: <repo>/checkpoints/stage3_sentiment_large_v2retrain/checkpoint_epoch_9.pt
+  Benchmark : <repo>/data/labeled/final/holdout_relabeled.jsonl
+  Articles  : 6,750    Elapsed: 1195.6s    IoU>=0.5
+  Aggregation: unweighted mean-pool
+  NER mode  : single-pass  (confidence_threshold=0.7)
+  NOTE: single-pass NER uses CLS-only global attention (train/test mismatch)
+================================================================================
+
+------------------------------------------------------------
+  NER PIPELINE DIAGNOSTICS
+------------------------------------------------------------
+  Articles where Pass 1 produced 0 confident spans: 158  (2.3%)
+  Articles where Pass 2 NER ran                    : 0  (0.0%)
+  Avg Pass 1 spans per article                     : 23.29
+  Avg Pass 1 high-confidence tokens per article    : 0.00
+
+------------------------------------------------------------
+  NER (SPAN-LEVEL, all entity types)
+------------------------------------------------------------
+  Precision: 0.6272   Recall: 0.3405   F1: 0.4413
+  TP=98,602   FP=58,606   FN=191,012
+
+  NER (sentiment-bearing types only: ORG/TICKER/PERSON/COMPANY)
+  Precision: 0.7133   Recall: 0.3380   F1: 0.4586
+  TP=81,678   FP=32,830   FN=159,985
+
+  Type           Prec   Recall       F1        TP       FP       FN
+  ---------- -------- -------- --------  -------- -------- --------
+  DATE         0.3982   0.3088   0.3478     4,177    6,314    9,351
+  MONEY        0.6240   0.4202   0.5022     9,530    5,743   13,151
+  ORG          0.7477   0.3345   0.4622    59,135   19,951  117,656
+  PERCENT      0.1900   0.2740   0.2244     3,217   13,719    8,525
+  PERSON       0.6834   0.3440   0.4576     8,243    3,818   15,720
+  TICKER       0.6121   0.3496   0.4450    14,300    9,061   26,609
+
+------------------------------------------------------------
+  ENTITY COVERAGE (sentiment-bearing gold entities)
+------------------------------------------------------------
+  Coverage rate: 0.4223
+  Covered      : 27,566 / 65,270
+
+------------------------------------------------------------
+  SENTIMENT QUALITY (on covered gold entities)
+------------------------------------------------------------
+  N entities    : 27,566
+  MSE           : 0.069440
+  MAE           : 0.191890
+  Pearson r     : 0.627852
+  Pred range    : [-0.6765, 0.6838]   mean=0.1052   std=0.2463
+  Gold range    : [-1.0000, 1.0000]   mean=0.1069   std=0.3354
+
+------------------------------------------------------------
+  PER-TYPE SENTIMENT (on covered)
+------------------------------------------------------------
+  Type              N        MSE        MAE       Corr
+  ---------- -------- ---------- ---------- ----------
+  ORG          18,539   0.071672   0.195619   0.598398
+  PERSON        3,877   0.065048   0.178790   0.412404
+  TICKER        5,150   0.064711   0.188325   0.772576
+
+------------------------------------------------------------
+  JOINT ACCURACY (matched span + sentiment within tolerance)
+------------------------------------------------------------
+  |pred - gold| <= 0.1: 0.3963
+  |pred - gold| <= 0.2: 0.6370
+  |pred - gold| <= 0.3: 0.7882
+  |pred - gold| <= 0.4: 0.8688
+  |pred - gold| <= 0.5: 0.9265
+
+------------------------------------------------------------
+  SENTIMENT BUCKET CONFUSION  (rows=true, cols=predicted)
+------------------------------------------------------------
+  True \ Pred       very_negative       negative        neutral       positive  very_positive      Total
+  ---------------- -------------- -------------- -------------- -------------- -------------- ----------
+  very_negative               279            424            159             45              0        907
+  negative                    196          1,001          1,395            383              0      2,975
+  neutral                       3            317          8,649          1,877              0     10,846
+  positive                      0            103          4,953          5,609              6     10,671
+  very_positive                 0             10            735          1,414              8      2,167
+
+  Exact bucket accuracy   : 0.5640
+  Adjacent bucket accuracy: 0.9478
+
+------------------------------------------------------------
+  MATCHED PREDICTIONS PER GOLD ENTITY
+------------------------------------------------------------
+  1 matched span(s): 14,218
+  2 matched span(s): 4,042
+  3 matched span(s): 2,508
+  4 matched span(s): 1,495
+  5 matched span(s): 1,905
+  6 matched span(s): 713
+  7 matched span(s): 544
+  8 matched span(s): 392
+  9 matched span(s): 297
+  10 matched span(s): 215
+  11 matched span(s): 203
+  12 matched span(s): 172
+  13 matched span(s): 128
+  14 matched span(s): 121
+  15 matched span(s): 97
+  16 matched span(s): 66
+  17 matched span(s): 59
+  18 matched span(s): 72
+  19 matched span(s): 47
+  20 matched span(s): 41
+  21 matched span(s): 42
+  22 matched span(s): 28
+  23 matched span(s): 27
+  24 matched span(s): 25
+  25 matched span(s): 25
+  26 matched span(s): 11
+  27 matched span(s): 13
+  28 matched span(s): 15
+  29 matched span(s): 10
+  30 matched span(s): 8
+  31 matched span(s): 3
+  32 matched span(s): 4
+  33 matched span(s): 5
+  34 matched span(s): 4
+  35 matched span(s): 5
+  36 matched span(s): 1
+  40 matched span(s): 1
+  45 matched span(s): 1
+  46 matched span(s): 1
+  53 matched span(s): 1
+  54 matched span(s): 1
+
+================================================================================

@@ -1,0 +1,39 @@
+# Config for the sentiment -> returns signal study.
+# All paths are relative to the repo root (entity_sentiment_model_pipeline/).
+
+paths:
+  enriched_glob: "outputs/inference/*_enriched.jsonl"
+  prices_dir: "data/raw/eodhd_bulk_20260518/prices"
+  news_glob: "data/raw/eodhd_bulk_20260518/news/*.jsonl.gz"
+  out_dir: "signal_strategy/outputs"
+  panel: "signal_strategy/outputs/panel.parquet"
+  panel_baseline: "signal_strategy/outputs/panel_baseline.parquet"
+
+universe:
+  price_suffix: ".US"          # ticker_sentiments use bare ticker; prices use <ticker>.US
+  min_names_per_day: 5         # drop cross-sections too thin to rank
+
+signal:
+  primary: "sent_mw"           # mention-weighted mean entity sentiment
+  weight_field: "total_mentions"
+
+horizons: [1, 5, 20]           # forward-return horizons in trading days
+
+# Look-ahead / execution policy.
+#   Signal for day t uses only news with trade_date <= t (panel is built that way).
+#   IC / Fama-MacBeth / event study use close-to-close forward returns starting after t.
+#   The long-short backtest executes at the NEXT session's open (t+1) to be realistic.
+execution:
+  lag_days: 1                  # enter at t+lag open (1 = next-open execution)
+  default_hold: 5              # H; overridden by the event-study read-off if set null
+  costs_bps: [5, 10]           # per side, basis points
+  weighting: ["equal", "value"]  # value = by dollar volume
+
+controls:
+  mom_short: 21                # past ~1-month return
+  mom_long: 252                # past ~1-year return
+
+backtest:
+  n_quintiles: 5
+  train_frac: 0.70             # pick the rule on first 70% of dates; report OOS on last 30%
+  seed: 20260621

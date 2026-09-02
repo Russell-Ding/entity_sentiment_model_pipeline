@@ -1,0 +1,203 @@
+## 1. Verdict
+
+The negative trading conclusion is directionally credible, but the headline claim of “real predictive content” is not established. The reported IC, Fama–MacBeth, and event-study results all use the same contaminated `trade_date` panel that generated the admitted look-ahead close-entry Sharpe. Once publication timestamps are assigned honestly, the only rerun performed is a quintile backtest, and it turns negative. Therefore the defensible conclusion is narrower: **the original daily signal contains contemporaneous information about price reactions, much of it from after-hours news incorrectly assigned to the prior close; no daily-bar trading edge has been demonstrated after enforcing information availability.** Calling the remaining relationship “genuinely predictive” is premature until IC/FM/event tests are rebuilt on timestamp-feasible panels. The study also overstates statistical precision, uses dollar volume as “size,” has weak OOS discipline, and contains return-accounting and portfolio-simulation approximations that should be fixed before publication. I made no file changes.
+
+## 2. Issues found, ranked by severity
+
+### Critical — The three “predictive content” tests are also look-ahead contaminated
+
+The original panel trusts the supplied `trade_date` without reading publication time: [build_panel.py](signal_strategy/src/build_panel.py:36). Its documentation explicitly assumes the signal is known at that day’s close, an assumption later proven false: [build_panel.py](signal_strategy/src/build_panel.py:8).
+
+That same panel feeds:
+
+- IC: [ic_analysis.py](signal_strategy/src/ic_analysis.py:51)
+- Fama–MacBeth: [fama_macbeth.py](signal_strategy/src/fama_macbeth.py:58)
+- Event study: [event_study.py](signal_strategy/src/event_study.py:91)
+
+The MOC follow-up rebuilds a feasible signal but reruns only the quintile backtest and decomposition—not IC, FM, or the event study: [moc_feasibility.py](signal_strategy/src/moc_feasibility.py:120), [moc_feasibility.py](signal_strategy/src/moc_feasibility.py:149).
+
+This is not a cosmetic caveat. The allegedly feasible signal produces −3.55 bps Q5−Q1 close-to-close and Sharpe −0.55, while the contaminated panel produces +36 bps and Sharpe 2.93. That collapse strongly suggests that the published IC 0.020, FM 10.3 bps/SD, and event-study +35.6 bps are largely—or entirely—contemporaneous after-hours reaction masquerading as prediction.
+
+**Required correction:** rerun every headline test on at least two point-in-time signals:
+
+1. Information known by 15:45 ET, predicting close \(t\) → close \(t+1\).
+2. Information known by the next session’s open, predicting open \(t+1\) → close \(t+1\) and later returns.
+
+Until then, finding (1) should be withdrawn.
+
+### High — Event-study t-statistics are badly overstated
+
+The event study treats approximately 12,000 top and 12,000 bottom ticker-events as independent observations: [event_study.py](signal_strategy/src/event_study.py:112).
+
+They plainly are not independent:
+
+- Many events share the same calendar day and market shock.
+- The same ticker appears repeatedly.
+- Multi-day CAR windows overlap.
+- One article can generate events for several related tickers.
+- Quintile legs are mechanically cross-sectionally dependent.
+
+Consequently, the reported day-1 \(t=10.1\) is not credible as an inference statistic. Use date-clustered inference, two-way clustering by date and ticker, or a daily Q5−Q1 return series followed by HAC. For multi-day windows, use an HAC lag at least commensurate with the horizon. The event-level independent-sample formula is the wrong estimator.
+
+### High — “After controlling for size” is false
+
+`size` is defined as log adjusted-close × volume on the signal date: [build_panel.py](signal_strategy/src/build_panel.py:137). That is dollar turnover/liquidity, not firm size or market capitalization.
+
+The statement that sentiment survives “size + momentum controls” should instead say “same-day dollar-volume and momentum controls.” Same-day volume may itself react to the news, making it a post-treatment control. It can distort rather than cleanly isolate the sentiment coefficient.
+
+Cheap substitutes include lagged dollar volume, lagged price, or external shares outstanding if already available. At minimum, rename the control and lag it one session.
+
+### High — The result is not genuinely out-of-sample
+
+The 70/30 split merely reports the final backtest after the design was selected using full-sample evidence. The event study uses the entire sample to choose \(H=8\): [event_study.py](signal_strategy/src/event_study.py:116). The backtest then imports that full-sample-selected horizon: [backtest_ls.py](signal_strategy/src/backtest_ls.py:245).
+
+The research also inspects:
+
+- Three return horizons.
+- Several holding periods.
+- Two execution conventions.
+- Equal/value weighting.
+- Multiple cost assumptions.
+- Signal-intensity splits.
+- Model versus baseline.
+- MOC and after-hours variants.
+
+No multiplicity correction or untouched test set exists. This is acceptable exploratory research, but the terms “unambiguous detection” and “OOS” overstate the evidence. Use a fixed pre-2024 discovery sample and freeze all rules before evaluating 2024–2025 once.
+
+### High — Survivorship and missing-return handling can materially bias both inference and trading results
+
+The universe is current S&P 500 constituents, which excludes failed, acquired, and demoted companies. This is not merely a “second-order” concern for long/short research: deletion and distress are correlated with negative news and negative sentiment. The bottom quintile is exactly where survivorship can matter most.
+
+Worse, missing price returns are silently treated as zero contribution without re-normalizing surviving leg weights: [backtest_ls.py](signal_strategy/src/backtest_ls.py:135). Delistings, suspensions, symbol changes, and incomplete histories therefore create implicit cash rather than an economically valid return.
+
+Use a point-in-time membership universe or describe this explicitly as a current-constituent diagnostic. Audit every missing leg return and include delisting/acquisition returns where possible.
+
+### Medium-high — Price bases are inconsistent across overnight decomposition
+
+Close-to-close returns use adjusted close, while open-to-close returns use raw open and raw close: [backtest_ls.py](signal_strategy/src/backtest_ls.py:49). “Overnight” is then calculated as:
+
+\[
+r_{cc}-r_{oc}
+\]
+
+rather than the multiplicatively correct:
+
+\[
+(1+r_{cc})/(1+r_{oc})-1.
+\]
+
+See [backtest_ls.py](signal_strategy/src/backtest_ls.py:210). Around dividends and splits, adjusted close-to-close and raw open-to-close are not directly compatible. This probably does not explain 40.9 bps, but it can generate outliers and invalidates the assertion of an exact decomposition.
+
+Construct split/dividend-adjusted open and close consistently and verify:
+
+\[
+(1+r_{\text{overnight}})(1+r_{\text{intraday}})=1+r_{\text{close-close}}.
+\]
+
+### Medium-high — Trading-calendar and timestamp handling are insufficiently validated
+
+The MOC code correctly calls `astimezone(America/New_York)` for aware timestamps, but silently assumes every naive timestamp is UTC: [moc_feasibility.py](signal_strategy/src/moc_feasibility.py:69). That assumption needs a source-schema audit rather than an implicit fallback.
+
+It also uses AAPL’s observed price dates as the NYSE calendar: [moc_feasibility.py](signal_strategy/src/moc_feasibility.py:40). That misses explicit exchange metadata such as early closes. A fixed 15:45 cutoff is invalid on 13:00 ET half-days. News released at 13:30 on such a day would be treated as same-day feasible even though the market had closed.
+
+Use an actual NYSE schedule with session-specific open, close, and order cutoffs. Explicitly test DST boundaries, weekends, holidays, half-days, timestamps with `Z`, explicit offsets, and naive timestamps.
+
+### Medium — Quintiles are forced even when the signal is tied or the cross-section is tiny
+
+The study permits as few as 10 names for quintile construction, producing two names per leg: [backtest_ls.py](signal_strategy/src/backtest_ls.py:69). `rank(method="first")` breaks sentiment ties according to row order: [backtest_ls.py](signal_strategy/src/backtest_ls.py:72). Thus economically identical sentiment values can be assigned to opposite portfolios arbitrarily.
+
+With median coverage only 45 names/day, results may be dominated by unstable small legs. Require 25–50 names, report distinct signal values, use deterministic ticker-based tie handling, and either keep ties together or use continuous rank weights.
+
+### Medium — Fama–MacBeth specifications are thin and inference lags are arbitrary
+
+Some daily regressions can run with only six observations and four regressors plus intercept: [fama_macbeth.py](signal_strategy/src/fama_macbeth.py:33). That is not a meaningful daily cross-section.
+
+The same fixed HAC lag of 5 is used for 1-, 5-, and 20-day overlapping outcomes: [fama_macbeth.py](signal_strategy/src/fama_macbeth.py:24). Lag 5 is inadequate for 20-day overlapping returns and potentially marginal even for 5-day returns. Use horizon-dependent lags, such as at least \(h-1\), and show sensitivity to larger bandwidths.
+
+Also add sector/industry controls or sector-neutral ranks. Earnings/news composition varies strongly by sector and could generate a sentiment coefficient through omitted industry exposure.
+
+### Medium — Turnover and cost accounting are only rough approximations
+
+Costs are applied to changes in ideal target weights, without mark-to-market drift, bid/ask spreads, participation constraints, borrow costs, short availability, or open-auction impact: [backtest_ls.py](signal_strategy/src/backtest_ls.py:142).
+
+The comment that the method is necessarily conservative is not justified. Ignoring drift can overstate or understate turnover, while ignoring open-auction impact and short constraints is optimistic. At roughly 400× annual one-way turnover, implementation details dominate.
+
+This does not rescue a negative gross strategy, but the cost results should be described as illustrative rather than realistic.
+
+### Medium — CAR and multi-day decomposition sum simple returns
+
+The event study uses cumulative sums of simple abnormal returns: [event_study.py](signal_strategy/src/event_study.py:80). The backtest decomposition similarly uses `np.nansum`: [backtest_ls.py](signal_strategy/src/backtest_ls.py:208).
+
+For 20-day windows, compound returns or sum log returns. The numerical difference may be small, but there is no reason to retain the approximation.
+
+### Medium — COVID and regime concentration remain untested
+
+The sample starts on 2020-03-23, almost exactly at the COVID crash low. Results should be broken out by:
+
+- 2020 crisis/rebound.
+- 2021.
+- 2022 tightening/bear market.
+- 2023–2025.
+- Earnings versus non-earnings dates.
+- High- versus low-volatility regimes.
+
+A mean IC of 0.020 can easily be generated by a small number of extreme announcement regimes. The cumulative-IC plot is not a substitute for stability statistics.
+
+## 3. What I would test next
+
+In priority order:
+
+1. **Rebuild all statistics on point-in-time panels.** Create separate 09:30, 15:45, 16:00, and next-open information sets. Rerun IC, FM, event study, and Q5−Q1 on return windows that begin only after each cutoff.
+
+2. **Directly isolate the contamination.** Compute the original headline statistics separately for:
+
+   - News published before 09:30.
+   - 09:30–15:45.
+   - 15:45–16:00.
+   - 16:00–20:00.
+   - Overnight/pre-market.
+   - Ticker-days with mixed early and late articles.
+
+   If the +36 bps exists only in the 16:00–20:00 bucket assigned to the prior close, the original “prediction” is conclusively an alignment artifact.
+
+3. **Run placebo date shifts.** Shift sentiment by −1, 0, +1, and +2 trading sessions. A contaminated signal should peak at the incorrectly assigned date; an honest predictive signal should peak only after the information timestamp. Also randomly permute tickers within publication date while preserving news intensity.
+
+4. **Use executable return identities.** With consistently adjusted OHLC, calculate close→open, open→close, and close→close multiplicatively and flag every row where the identity fails beyond tolerance.
+
+5. **Replace event-level t-statistics.** Build a daily top-minus-bottom portfolio series and apply HAC. Also report date-clustered and ticker/date two-way-clustered estimates.
+
+6. **Run year-by-year and expanding-window tests.** Freeze rules on 2020–2022; validate on 2023; test once on 2024–2025. Report sign, IC, Q5−Q1, and coverage by year—not merely aggregate Sharpe.
+
+7. **Increase cross-sectional quality thresholds.** Repeat at minimum 10, 25, 50, and 100 names; require sufficient unique sentiment values; test continuous rank weights. This will show whether results depend on arbitrary tie breaking and two-stock quintiles.
+
+8. **Sector-neutralize.** Demean sentiment and returns within sector/date or add sector fixed effects. Repeat excluding earnings announcements, then earnings-only.
+
+9. **Audit timestamp provenance.** Count timestamp formats and offsets, validate naive timestamps against the raw vendor schema, and inspect DST/half-day cases. Sample 100 articles around 16:00 ET manually.
+
+10. **Audit survivorship and missing returns.** Report missing-bar counts by ticker/date/sentiment quintile, corporate-action dates, dropped symbols, and implicit cash exposure. Even without historical membership, run a sensitivity analysis excluding names with incomplete price histories.
+
+11. **Test signal change rather than level.** Daily sentiment level can proxy for recurring firm/news characteristics. Test sentiment innovation relative to each ticker’s trailing distribution, first article of an event, article-count controlled residuals, and disagreement/dispersion.
+
+12. **Quantify uncertainty around the negative result.** The feasible MOC Sharpe −0.55 has NW \(t=-1.40\), and late-next-open Sharpe −0.18 has \(t=-0.44\). These support “no detected edge,” not proof that the true edge is exactly zero. Report confidence intervals and the smallest economically useful effect that the sample can exclude.
+
+## 4. Non-trading uses to prioritize
+
+1. **Event detection and monitoring.** Use large entity-sentiment changes to prioritize news for analyst review, especially where one article affects several portfolio names or counterparties.
+
+2. **Risk alerts, not directional orders.** Flag negative sentiment shocks, disagreement, and rapid sentiment deterioration for exposure review, stop-loss investigation, or temporary risk-limit tightening. This leverages semantic triage without claiming return alpha.
+
+3. **Earnings and catalyst summarization.** Aggregate entity-specific sentiment across management, products, regulators, competitors, and counterparties. The entity granularity is more valuable here than a single article polarity.
+
+4. **Portfolio news attribution.** Explain overnight P&L by linking after-hours news to affected entities and the sign/magnitude of the observed gap. The contaminated “prediction” may actually demonstrate usefulness as a contemporaneous attribution system.
+
+5. **Research retrieval and ranking.** Rank the daily news queue by portfolio relevance, mention weight, sentiment extremity, corroboration, and model uncertainty.
+
+6. **Fundamental feature generation.** Aggregate weekly or monthly sentiment level, innovation, dispersion, negative-tail frequency, and source agreement for slower fundamental or risk models. These must still be tested point-in-time, but they avoid competing on daily news latency.
+
+7. **Data-quality and anomaly detection.** Use conflicts between model sentiment, vendor polarity, and realized response to find ticker-resolution failures, legal-outcome mis-signs, secondary-entity errors, or unusual events for relabeling.
+
+8. **Model evaluation against market reaction.** Treat the immediate after-hours price response as a weak external validity label—not as a tradable target—to compare model versions, entity mappings, and sentiment calibration. Avoid circularly optimizing on the same period later used for return claims.
+
+The most promising interpretation of the current work is therefore not “predictive but untradable.” It is: **the model appears to encode the direction of economically meaningful news, but the present daily alignment cannot distinguish genuine forecasting from contemporaneous price discovery. Its immediate value is monitoring, attribution, and research workflow automation; any alpha claim requires a fully timestamped rerun.**
+
+

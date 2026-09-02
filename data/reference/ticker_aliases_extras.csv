@@ -1,0 +1,141 @@
+alias,ticker,company,notes
+Google,GOOGL,Alphabet Inc.,common brand name for Alphabet
+Facebook,META,Meta Platforms Inc.,renamed from Facebook in 2021
+TSMC,TSM,Taiwan Semiconductor Manufacturing Co.,US ADR for 2330.TW
+Taiwan Semiconductor,TSM,Taiwan Semiconductor Manufacturing Co.,US ADR
+Taiwan Semiconductor Manufacturing,TSM,Taiwan Semiconductor Manufacturing Co.,US ADR full name
+Sony,SONY,Sony Group Corp.,US ADR
+Sony Corp.,SONY,Sony Group Corp.,US ADR
+Sony Group,SONY,Sony Group Corp.,US ADR
+Toyota,TM,Toyota Motor Corp.,US ADR
+Nintendo,NTDOY,Nintendo Co. Ltd.,US ADR (OTC)
+Alibaba,BABA,Alibaba Group Holding Ltd.,US ADR
+Tencent,TCEHY,Tencent Holdings Ltd.,US ADR (OTC)
+Baidu,BIDU,Baidu Inc.,US ADR
+NIO,NIO,NIO Inc.,US listed
+BYD,BYDDY,BYD Co. Ltd.,US ADR (OTC)
+JD,JD,JD.com Inc.,US listed
+JD.com,JD,JD.com Inc.,US listed
+ARM,ARM,Arm Holdings PLC,US listed
+ARM Holdings,ARM,Arm Holdings PLC,US listed
+ASML,ASML,ASML Holding NV,US listed
+Snap,SNAP,Snap Inc.,US listed
+Snapchat,SNAP,Snap Inc.,US listed
+Uber,UBER,Uber Technologies Inc.,US listed
+Lyft,LYFT,Lyft Inc.,US listed
+Spotify,SPOT,Spotify Technology SA,US listed
+Roku,ROKU,Roku Inc.,US listed
+Pinterest,PINS,Pinterest Inc.,US listed
+Square,SQ,Block Inc.,renamed to Block
+Block,SQ,Block Inc.,formerly Square
+PayPal,PYPL,PayPal Holdings Inc.,already SP500
+Shopify,SHOP,Shopify Inc.,US listed
+SAP,SAP,SAP SE,US ADR
+Novo Nordisk,NVO,Novo Nordisk A/S,US ADR
+Pfizer,PFE,Pfizer Inc.,SP500
+Coinbase,COIN,Coinbase Global Inc.,US listed
+Palantir,PLTR,Palantir Technologies Inc.,US listed
+PLTR,PLTR,Palantir Technologies Inc.,ticker
+Robinhood,HOOD,Robinhood Markets Inc.,US listed
+DoorDash,DASH,DoorDash Inc.,US listed
+Rivian,RIVN,Rivian Automotive Inc.,US listed
+Lucid,LCID,Lucid Group Inc.,US listed
+Lucid Motors,LCID,Lucid Group Inc.,US listed
+Berkshire,BRK-B,Berkshire Hathaway Inc.,prefer class B
+Berkshire Hathaway,BRK-B,Berkshire Hathaway Inc.,prefer class B
+Visa,V,Visa Inc.,SP500
+Mastercard,MA,Mastercard Inc.,SP500
+American Express,AXP,American Express Co.,SP500
+Amex,AXP,American Express Co.,common alias
+JPMorgan,JPM,JPMorgan Chase & Co.,SP500
+JP Morgan,JPM,JPMorgan Chase & Co.,SP500
+Chase,JPM,JPMorgan Chase & Co.,common alias
+Bank of America,BAC,Bank of America Corp.,SP500
+BofA,BAC,Bank of America Corp.,common alias
+Wells Fargo,WFC,Wells Fargo & Co.,SP500
+Citi,C,Citigroup Inc.,SP500
+Citigroup,C,Citigroup Inc.,SP500
+Goldman Sachs,GS,Goldman Sachs Group Inc.,SP500
+Goldman,GS,Goldman Sachs Group Inc.,common alias
+Morgan Stanley,MS,Morgan Stanley,SP500
+Disney,DIS,Walt Disney Co.,SP500
+Walmart,WMT,Walmart Inc.,SP500
+Costco,COST,Costco Wholesale Corp.,SP500
+Target,TGT,Target Corp.,SP500
+Home Depot,HD,Home Depot Inc.,SP500
+Lowes,LOW,Lowe's Companies Inc.,SP500
+McDonalds,MCD,McDonald's Corp.,SP500
+Starbucks,SBUX,Starbucks Corp.,SP500
+Boeing,BA,Boeing Co.,SP500
+General Motors,GM,General Motors Co.,SP500
+Ford,F,Ford Motor Co.,SP500
+Coca-Cola,KO,Coca-Cola Co.,SP500
+Coke,KO,Coca-Cola Co.,common alias
+Pepsi,PEP,PepsiCo Inc.,SP500
+PepsiCo,PEP,PepsiCo Inc.,SP500
+Johnson & Johnson,JNJ,Johnson & Johnson,SP500
+J&J,JNJ,Johnson & Johnson,common alias
+Procter & Gamble,PG,Procter & Gamble Co.,SP500
+P&G,PG,Procter & Gamble Co.,common alias
+ExxonMobil,XOM,Exxon Mobil Corp.,SP500
+Exxon,XOM,Exxon Mobil Corp.,SP500
+Chevron,CVX,Chevron Corp.,SP500
+GE,GE,General Electric Co.,SP500
+General Electric,GE,General Electric Co.,SP500
+IBM,IBM,International Business Machines Corp.,SP500
+Oracle,ORCL,Oracle Corp.,SP500
+Salesforce,CRM,Salesforce Inc.,SP500
+Adobe,ADBE,Adobe Inc.,SP500
+Cisco,CSCO,Cisco Systems Inc.,SP500
+HP,HPQ,HP Inc.,SP500
+Hewlett-Packard,HPQ,HP Inc.,SP500
+Dell,DELL,Dell Technologies Inc.,SP500
+AMD,AMD,Advanced Micro Devices Inc.,SP500
+Micron,MU,Micron Technology Inc.,SP500
+Applied Materials,AMAT,Applied Materials Inc.,SP500
+Broadcom,AVGO,Broadcom Inc.,SP500
+Texas Instruments,TXN,Texas Instruments Inc.,SP500
+Analog Devices,ADI,Analog Devices Inc.,SP500
+Marvell,MRVL,Marvell Technology Inc.,SP500
+Lam Research,LRCX,Lam Research Corp.,SP500
+KLA,KLAC,KLA Corp.,SP500
+Synopsys,SNPS,Synopsys Inc.,SP500
+Cadence,CDNS,Cadence Design Systems Inc.,SP500
+Workday,WDAY,Workday Inc.,SP500
+ServiceNow,NOW,ServiceNow Inc.,SP500
+Snowflake,SNOW,Snowflake Inc.,US listed
+Databricks,,Databricks Inc.,private (no ticker)
+OpenAI,,OpenAI Inc.,private (no public ticker)
+Anthropic,,Anthropic PBC,private
+SpaceX,,Space Exploration Technologies Corp.,private
+Stripe,,Stripe Inc.,private
+ByteDance,,ByteDance Ltd.,private
+TikTok,,TikTok (ByteDance),private
+Huawei,,Huawei Technologies Co.,private (sanctioned)
+Foxconn,,Hon Hai Precision Industry Co.,traded as 2317.TW (no major US ADR)
+Hon Hai,,Hon Hai Precision Industry Co.,Foxconn parent (2317.TW)
+Xiaomi,,Xiaomi Corp.,traded as 1810.HK
+Epic Games,,Epic Games Inc.,private
+Epic,,Epic Games Inc.,short alias for Epic Games (ambiguous)
+Quanta,2382-TW,Quanta Computer Inc.,Taiwan listed (no US equivalent)
+Quanta Computer,2382-TW,Quanta Computer Inc.,Taiwan listed
+LG,066570-KS,LG Electronics Inc.,Korea listed
+LG Electronics,066570-KS,LG Electronics Inc.,Korea listed
+Samsung,005930-KS,Samsung Electronics Co.,Korea listed (no major US ADR)
+Samsung Electronics,005930-KS,Samsung Electronics Co.,Korea listed
+SK Hynix,000660-KS,SK Hynix Inc.,Korea listed
+SoftBank,SFTBY,SoftBank Group Corp.,US ADR (OTC)
+SoftBank Group,SFTBY,SoftBank Group Corp.,US ADR (OTC)
+Masimo,MASI,Masimo Corp.,Nasdaq (non-SP500)
+SoFi,SOFI,SoFi Technologies Inc.,US listed
+Affirm,AFRM,Affirm Holdings Inc.,US listed
+Etsy,ETSY,Etsy Inc.,US listed
+Twilio,TWLO,Twilio Inc.,US listed
+Datadog,DDOG,Datadog Inc.,US listed
+MongoDB,MDB,MongoDB Inc.,US listed
+CrowdStrike,CRWD,CrowdStrike Holdings Inc.,US listed
+Cloudflare,NET,Cloudflare Inc.,US listed
+Twitter,,Twitter Inc.,acquired by X Corp 2022 (private)
+X,,X Corp,formerly Twitter (private)
+Meta,META,Meta Platforms Inc.,SP500
+Alphabet,GOOGL,Alphabet Inc.,SP500 (prefer voting class)

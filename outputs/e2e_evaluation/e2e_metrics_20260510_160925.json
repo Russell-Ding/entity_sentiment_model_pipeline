@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "checkpoint": "<repo>/checkpoints/best_model_20260418.pt",
+    "benchmark": "<repo>/data/labeled/final/holdout_relabeled.jsonl",
+    "version": "v2",
+    "checkpoint_epoch": 7,
+    "iou_threshold": 0.5,
+    "weighted_aggregation": false,
+    "ner_mode": "two-pass",
+    "ner_confidence": 0.7,
+    "timestamp": "20260510_160925",
+    "device": "cpu",
+    "max_length": 1024,
+    "n_articles_attempted": 30,
+    "n_articles_succeeded": 30,
+    "failure_reasons": {},
+    "ner_diagnostics": {
+      "n_articles_pass1_zero_confident": 21,
+      "frac_articles_pass1_zero_confident": 0.7,
+      "n_articles_used_pass2_ner": 9,
+      "frac_articles_used_pass2_ner": 0.3,
+      "avg_pass1_spans_per_article": 3.5,
+      "avg_pass1_high_conf_tokens_per_article": 7.566666666666666
+    }
+  },
+  "n_articles": 30,
+  "elapsed_seconds": 146.66153597831726,
+  "ner_metrics": {
+    "overall_all_types": {
+      "precision": 0.14285714285714285,
+      "recall": 0.01468048359240069,
+      "f1": 0.02662490211433046,
+      "tp": 17,
+      "fp": 102,
+      "fn": 1141
+    },
+    "overall_sentiment_types": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 41,
+      "fn": 1050
+    },
+    "per_type": {
+      "DATE": {
+        "precision": 0.75,
+        "recall": 0.1,
+        "f1": 0.17647058823529416,
+        "tp": 6,
+        "fp": 2,
+        "fn": 54
+      },
+      "MONEY": {
+        "precision": 0.22857142857142856,
+        "recall": 0.18181818181818182,
+        "f1": 0.20253164556962025,
+        "tp": 8,
+        "fp": 27,
+        "fn": 36
+      },
+      "ORG": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 20,
+        "fn": 809
+      },
+      "PERCENT": {
+        "precision": 0.08571428571428572,
+        "recall": 0.75,
+        "f1": 0.15384615384615383,
+        "tp": 3,
+        "fp": 32,
+        "fn": 1
+      },
+      "PERSON": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 15,
+        "fn": 117
+      },
+      "TICKER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 6,
+        "fn": 124
+      }
+    }
+  },
+  "coverage": {
+    "n_total_gold_with_sentiment": 288,
+    "n_covered": 0,
+    "coverage_rate": 0.0
+  },
+  "sentiment_on_covered": {},
+  "per_type_sentiment": {},
+  "joint_accuracy": {
+    "tol_0.1": 0.0,
+    "tol_0.2": 0.0,
+    "tol_0.3": 0.0,
+    "tol_0.4": 0.0,
+    "tol_0.5": 0.0
+  },
+  "bucket_confusion": {},
+  "bucket_metrics": {
+    "exact_acc": 0.0,
+    "adjacent_acc": 0.0
+  },
+  "matched_preds_distribution": {}
+}

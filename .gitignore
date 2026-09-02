@@ -1,0 +1,59 @@
+# ---- Secrets ----
+config/secrets.yaml
+*.env
+.env
+
+# ---- Local-only archive (working files kept out of the public repo) ----
+_archive_local/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+.venv/
+
+# ---- Data (EODHD news/prices and LLM labels are not redistributed) ----
+data/raw/
+data/labeled/
+data/archive/
+data/collection_tracking.json
+*.jsonl
+*.jsonl.gz
+*.csv
+*.parquet
+!data/reference/*.csv
+!signal_strategy/outputs/ic_daily.csv
+
+# ---- Model weights & checkpoints (not redistributed; see README) ----
+checkpoints/
+checkpoints_*/
+*.pt
+*.pth
+*.bin
+*.safetensors
+trained_model/**/model.pt
+trained_model/**/tokenizer/
+# keep model cards, configs and eval metrics
+!trained_model/**/MODEL_CARD.md
+!trained_model/**/config.json
+!trained_model/**/evaluation_results*.json
+
+# ---- Large / regenerable outputs ----
+outputs/inference/
+outputs/e2e_evaluation/*_predictions_*.jsonl
+outputs/eval_new_dataset/*_predictions_*.jsonl
+logs/
+*.log
+
+# ---- Notebooks / IDE / OS ----
+.ipynb_checkpoints/
+.idea/
+.vscode/
+.claude/
+.codex/
+*.swp
+.DS_Store
+Thumbs.db

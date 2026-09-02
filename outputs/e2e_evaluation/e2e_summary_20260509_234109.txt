@@ -1,0 +1,72 @@
+================================================================================
+  END-TO-END PIPELINE EVALUATION  --  V2
+  Checkpoint: <repo>/checkpoints/stage3_sentiment_large/best_model.pt
+  Benchmark : <repo>/data/labeled/final/holdout_relabeled.jsonl
+  Articles  : 30    Elapsed: 99.1s    IoU>=0.5
+  Aggregation: unweighted mean-pool
+  NOTE: NER Pass 1 uses CLS-only global attention (train/test mismatch)
+================================================================================
+
+------------------------------------------------------------
+  NER (SPAN-LEVEL, all entity types)
+------------------------------------------------------------
+  Precision: 0.2762   Recall: 0.0250   F1: 0.0459
+  TP=29   FP=76   FN=1,129
+
+  NER (sentiment-bearing types only: ORG/TICKER/PERSON/COMPANY)
+  Precision: 0.0000   Recall: 0.0000   F1: 0.0000
+  TP=0   FP=0   FN=1,050
+
+  Type           Prec   Recall       F1        TP       FP       FN
+  ---------- -------- -------- --------  -------- -------- --------
+  DATE         0.4375   0.1167   0.1842         7        9       53
+  MONEY        0.4222   0.4318   0.4270        19       26       25
+  ORG          0.0000   0.0000   0.0000         0        0      809
+  PERCENT      0.0682   0.7500   0.1250         3       41        1
+  PERSON       0.0000   0.0000   0.0000         0        0      117
+  TICKER       0.0000   0.0000   0.0000         0        0      124
+
+------------------------------------------------------------
+  ENTITY COVERAGE (sentiment-bearing gold entities)
+------------------------------------------------------------
+  Coverage rate: 0.0000
+  Covered      : 0 / 288
+
+------------------------------------------------------------
+  SENTIMENT QUALITY (on covered gold entities)
+------------------------------------------------------------
+
+------------------------------------------------------------
+  PER-TYPE SENTIMENT (on covered)
+------------------------------------------------------------
+  Type              N        MSE        MAE       Corr
+  ---------- -------- ---------- ---------- ----------
+
+------------------------------------------------------------
+  JOINT ACCURACY (matched span + sentiment within tolerance)
+------------------------------------------------------------
+  |pred - gold| <= 0.1: 0.0000
+  |pred - gold| <= 0.2: 0.0000
+  |pred - gold| <= 0.3: 0.0000
+  |pred - gold| <= 0.4: 0.0000
+  |pred - gold| <= 0.5: 0.0000
+
+------------------------------------------------------------
+  SENTIMENT BUCKET CONFUSION  (rows=true, cols=predicted)
+------------------------------------------------------------
+  True \ Pred       very_negative       negative        neutral       positive  very_positive      Total
+  ---------------- -------------- -------------- -------------- -------------- -------------- ----------
+  very_negative                 0              0              0              0              0          0
+  negative                      0              0              0              0              0          0
+  neutral                       0              0              0              0              0          0
+  positive                      0              0              0              0              0          0
+  very_positive                 0              0              0              0              0          0
+
+  Exact bucket accuracy   : 0.0000
+  Adjacent bucket accuracy: 0.0000
+
+------------------------------------------------------------
+  MATCHED PREDICTIONS PER GOLD ENTITY
+------------------------------------------------------------
+
+================================================================================

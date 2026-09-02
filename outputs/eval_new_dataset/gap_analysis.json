@@ -1,0 +1,722 @@
+{
+  "n_files": 1,
+  "n_covered_entities": 164723,
+  "overall": {
+    "label": "overall",
+    "n": 164723,
+    "pearson": 0.4846598783175053,
+    "pearson_ci": [
+      0.48016015657288363,
+      0.48935585684001276
+    ],
+    "spearman": 0.4509389513538966,
+    "spearman_ci": [
+      0.4466913596168606,
+      0.4555025926999505
+    ],
+    "ccc": 0.41583514243318487,
+    "std_ratio": 0.5679,
+    "mae": 0.20875905710023174
+  },
+  "per_type": [
+    {
+      "label": "ORG",
+      "n": 126865,
+      "pearson": 0.4861340092738307,
+      "pearson_ci": [
+        0.4806041213764715,
+        0.49145647613066457
+      ],
+      "spearman": 0.4455125510307101,
+      "spearman_ci": [
+        0.4402773591249721,
+        0.4507857300163326
+      ],
+      "ccc": 0.4284567029497386,
+      "std_ratio": 0.6015,
+      "mae": 0.20787829388802642
+    },
+    {
+      "label": "TICKER",
+      "n": 2109,
+      "pearson": 0.6220387700355889,
+      "pearson_ci": [
+        0.5913171324680402,
+        0.650095751741649
+      ],
+      "spearman": 0.6233296566780535,
+      "spearman_ci": [
+        0.5933748306685619,
+        0.651351503782184
+      ],
+      "ccc": 0.5840080841979954,
+      "std_ratio": 0.7026,
+      "mae": 0.25425697410319503
+    },
+    {
+      "label": "PERSON",
+      "n": 35749,
+      "pearson": 0.4929517251171182,
+      "pearson_ci": [
+        0.4840923939808813,
+        0.501103282109894
+      ],
+      "spearman": 0.4699354015487881,
+      "spearman_ci": [
+        0.4613091522486757,
+        0.4786833605942853
+      ],
+      "ccc": 0.3442288138003505,
+      "std_ratio": 0.4078,
+      "mae": 0.2092005496722525
+    }
+  ],
+  "per_company": [
+    {
+      "label": "TSLA",
+      "n": 7458,
+      "pearson": 0.520057076432984,
+      "pearson_ci": [
+        0.5022368140949253,
+        0.5379227497558327
+      ],
+      "spearman": 0.531625005228569,
+      "spearman_ci": [
+        0.5136762313705566,
+        0.5491417768543976
+      ],
+      "ccc": 0.4656584448956675,
+      "std_ratio": 0.6292,
+      "mae": 0.2630782653686947
+    },
+    {
+      "label": "GOOGL",
+      "n": 7136,
+      "pearson": 0.5688042504089592,
+      "pearson_ci": [
+        0.5487865182005193,
+        0.5865083570695041
+      ],
+      "spearman": 0.559051566221531,
+      "spearman_ci": [
+        0.5409372784386212,
+        0.5780557583561281
+      ],
+      "ccc": 0.4836230115640835,
+      "std_ratio": 0.5916,
+      "mae": 0.22022193748378374
+    },
+    {
+      "label": "AAPL",
+      "n": 7004,
+      "pearson": 0.48199846415149067,
+      "pearson_ci": [
+        0.46116861212578725,
+        0.5042733138470644
+      ],
+      "spearman": 0.47809721755133205,
+      "spearman_ci": [
+        0.4565683278559794,
+        0.4998369216747069
+      ],
+      "ccc": 0.4263044573955776,
+      "std_ratio": 0.6141,
+      "mae": 0.24616992378475874
+    },
+    {
+      "label": "AMZN",
+      "n": 6204,
+      "pearson": 0.5677241140212735,
+      "pearson_ci": [
+        0.5481902556770628,
+        0.5865796987216165
+      ],
+      "spearman": 0.5520917996096449,
+      "spearman_ci": [
+        0.5306858194223519,
+        0.5732685853694327
+      ],
+      "ccc": 0.5078559306947387,
+      "std_ratio": 0.6301,
+      "mae": 0.20881919585971576
+    },
+    {
+      "label": "MSFT",
+      "n": 5983,
+      "pearson": 0.49016264295408857,
+      "pearson_ci": [
+        0.46925230238498666,
+        0.5130252760185536
+      ],
+      "spearman": 0.46825338995594146,
+      "spearman_ci": [
+        0.4464711536720471,
+        0.49022663819826434
+      ],
+      "ccc": 0.438648821600479,
+      "std_ratio": 0.6193,
+      "mae": 0.21091867950984952
+    },
+    {
+      "label": "NVDA",
+      "n": 4167,
+      "pearson": 0.5332671750046424,
+      "pearson_ci": [
+        0.5093171762228033,
+        0.5574590115955811
+      ],
+      "spearman": 0.5229358072086954,
+      "spearman_ci": [
+        0.4986687423434504,
+        0.5478539766878041
+      ],
+      "ccc": 0.4743471635511179,
+      "std_ratio": 0.6151,
+      "mae": 0.2625882355301966
+    },
+    {
+      "label": "META",
+      "n": 4028,
+      "pearson": 0.5096766382610961,
+      "pearson_ci": [
+        0.48232620831918094,
+        0.5357294923149116
+      ],
+      "spearman": 0.5012602312221673,
+      "spearman_ci": [
+        0.47377803269805613,
+        0.5258097684225497
+      ],
+      "ccc": 0.4388167098517185,
+      "std_ratio": 0.5966,
+      "mae": 0.23629969054805744
+    },
+    {
+      "label": "JPM",
+      "n": 2620,
+      "pearson": 0.5674017385135871,
+      "pearson_ci": [
+        0.536231869279831,
+        0.6014568082208012
+      ],
+      "spearman": 0.5276709996642944,
+      "spearman_ci": [
+        0.49497642889324894,
+        0.5607075542294739
+      ],
+      "ccc": 0.522125135471581,
+      "std_ratio": 0.6615,
+      "mae": 0.16626210233470165
+    },
+    {
+      "label": "OPENAI",
+      "n": 1215,
+      "pearson": 0.4652094952632208,
+      "pearson_ci": [
+        0.41253214212082223,
+        0.5163941742983785
+      ],
+      "spearman": 0.41733448986930116,
+      "spearman_ci": [
+        0.3665281215823434,
+        0.46518238075483714
+      ],
+      "ccc": 0.44579808918253017,
+      "std_ratio": 0.7883,
+      "mae": 0.20600165496651088
+    },
+    {
+      "label": "TWTR",
+      "n": 1204,
+      "pearson": 0.3502718575959076,
+      "pearson_ci": [
+        0.29470278198445093,
+        0.40629440926107263
+      ],
+      "spearman": 0.3078340728687215,
+      "spearman_ci": [
+        0.24733575302176733,
+        0.3591842739213936
+      ],
+      "ccc": 0.27707379403242477,
+      "std_ratio": 0.4943,
+      "mae": 0.21656207681723766
+    },
+    {
+      "label": "GS",
+      "n": 1126,
+      "pearson": 0.3815155887319277,
+      "pearson_ci": [
+        0.3096877565453465,
+        0.4451014315908749
+      ],
+      "spearman": 0.34254525468861385,
+      "spearman_ci": [
+        0.28487439584827795,
+        0.39801754953556423
+      ],
+      "ccc": 0.3036086272764906,
+      "std_ratio": 0.5015,
+      "mae": 0.13570709216089177
+    },
+    {
+      "label": "GM",
+      "n": 1063,
+      "pearson": 0.4052162331770132,
+      "pearson_ci": [
+        0.34576532529493476,
+        0.46357883557626317
+      ],
+      "spearman": 0.3545151495285803,
+      "spearman_ci": [
+        0.29268571480514466,
+        0.4107920991859454
+      ],
+      "ccc": 0.3564295445272485,
+      "std_ratio": 0.5992,
+      "mae": 0.19989543683473743
+    },
+    {
+      "label": "ELON_MUSK",
+      "n": 969,
+      "pearson": 0.5610480223407134,
+      "pearson_ci": [
+        0.5194228656592929,
+        0.6018204239858761
+      ],
+      "spearman": 0.5656082071118865,
+      "spearman_ci": [
+        0.5192228612829931,
+        0.6076249318737266
+      ],
+      "ccc": 0.3935624626899706,
+      "std_ratio": 0.4227,
+      "mae": 0.2720775581821108
+    },
+    {
+      "label": "FED",
+      "n": 965,
+      "pearson": 0.2269741837190747,
+      "pearson_ci": [
+        0.1731210524104264,
+        0.28264425424927186
+      ],
+      "spearman": 0.23459994830724082,
+      "spearman_ci": [
+        0.17384446560481204,
+        0.29332582171528604
+      ],
+      "ccc": 0.17766979113415893,
+      "std_ratio": 0.4826,
+      "mae": 0.08509025663975688
+    },
+    {
+      "label": "INTC",
+      "n": 949,
+      "pearson": 0.27177734126917297,
+      "pearson_ci": [
+        0.19534512216358502,
+        0.34696586583459416
+      ],
+      "spearman": 0.24922396222882337,
+      "spearman_ci": [
+        0.18669512280959405,
+        0.3197195924876809
+      ],
+      "ccc": 0.20792343834442517,
+      "std_ratio": 0.5361,
+      "mae": 0.2805366861210115
+    }
+  ],
+  "baseline": {
+    "predict_mean_value": 0.012670662870394542,
+    "predict_mean_mae": 0.2312961948561346,
+    "model_mae": 0.20875905710023174,
+    "note": "a constant predictor has Pearson r undefined (0); any positive r beats it. MAE comparison shows whether the model beats predicting the mean."
+  },
+  "over_neutrality": {
+    "n_gold_strong": 53983,
+    "n_model_flat_on_strong": 16625,
+    "rate": 0.10092701079994901,
+    "rate_among_strong": 0.30796732304614416
+  },
+  "sign_flip": {
+    "n_both_signed": 61310,
+    "n_flips": 13160,
+    "rate_among_both_signed": 0.21464687652911435
+  },
+  "error_by_magnitude": [
+    {
+      "band": "incidental",
+      "range": [
+        0.0,
+        0.2
+      ],
+      "n": 71028,
+      "mae": 0.08995119310145765,
+      "mean_gold": 0.0014527552514501327,
+      "mean_pred": 0.013752938470566441
+    },
+    {
+      "band": "mild",
+      "range": [
+        0.2,
+        0.4
+      ],
+      "n": 39712,
+      "mae": 0.22185715064276373,
+      "mean_gold": 0.02424850171232876,
+      "mean_pred": 0.02977318740827411
+    },
+    {
+      "band": "moderate",
+      "range": [
+        0.4,
+        0.6
+      ],
+      "n": 42613,
+      "mae": 0.33276109659601333,
+      "mean_gold": 0.0055979137821791465,
+      "mean_pred": 0.020008295802326784
+    },
+    {
+      "band": "strong",
+      "range": [
+        0.6,
+        1.01
+      ],
+      "n": 11370,
+      "mae": 0.4404595464854691,
+      "mean_gold": 0.06881819700967456,
+      "mean_pred": 0.07828096345233146
+    }
+  ],
+  "bucket_confusion": {
+    "matrix": {
+      "very_neg": {
+        "very_neg": 0,
+        "neg": 553,
+        "neutral": 1017,
+        "pos": 63,
+        "very_pos": 0
+      },
+      "neg": {
+        "very_neg": 0,
+        "neg": 9399,
+        "neutral": 23330,
+        "pos": 1972,
+        "very_pos": 0
+      },
+      "neutral": {
+        "very_neg": 0,
+        "neg": 2771,
+        "neutral": 70065,
+        "pos": 5555,
+        "very_pos": 1
+      },
+      "pos": {
+        "very_neg": 0,
+        "neg": 1990,
+        "neutral": 28521,
+        "pos": 13105,
+        "very_pos": 16
+      },
+      "very_pos": {
+        "very_neg": 0,
+        "neg": 231,
+        "neutral": 2165,
+        "pos": 3944,
+        "very_pos": 25
+      }
+    },
+    "exact_acc": 0.5621194368728107
+  },
+  "extreme_bucket_f1": {
+    "very_neg": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "n_gold": 1633
+    },
+    "very_pos": {
+      "precision": 0.595,
+      "recall": 0.004,
+      "f1": 0.008,
+      "n_gold": 6365
+    }
+  },
+  "iou_distribution": {
+    "n_matched": 450135,
+    "mean": 0.968298975924721,
+    "pct_iou_lt_0.7": 0.05981316716096282,
+    "pct_iou_eq_1.0": 0.8994568296177813,
+    "p10": 0.9722222222222222,
+    "p50": 1.0
+  },
+  "span_coverage": {
+    "n_pred_sentiment_spans": 526105,
+    "n_unmatched_pred_spans": 75970,
+    "pct_pred_unmatched": 0.14440083253342964
+  },
+  "person_split": [
+    {
+      "label": "PERSON_kimi_rescored",
+      "n": 34415,
+      "pearson": 0.49707041637558996,
+      "pearson_ci": [
+        0.48723153721699297,
+        0.505700406262404
+      ],
+      "spearman": 0.4764931598508178,
+      "spearman_ci": [
+        0.46747293167463677,
+        0.4852004106022312
+      ],
+      "ccc": 0.3463750083676336,
+      "std_ratio": 0.4066,
+      "mae": 0.21171216380483873
+    },
+    {
+      "label": "PERSON_not_rescored",
+      "n": 1334,
+      "pearson": 0.2894652423185994,
+      "pearson_ci": [
+        0.2242742779413808,
+        0.35403638154804223
+      ],
+      "spearman": 0.23417825497090256,
+      "spearman_ci": [
+        0.17711920853222912,
+        0.28761214982681105
+      ],
+      "ccc": 0.21616675339648908,
+      "std_ratio": 0.4581,
+      "mae": 0.14440504714380012
+    }
+  ],
+  "examples_over_neutral": [
+    {
+      "id": "d082104d2e7f",
+      "canonical_id": "MDT",
+      "type": "ORG",
+      "gold": 0.4,
+      "pred": 0.061,
+      "text_head": "Apple Partner Foxconn to Start Making Ventilators in U.S.. (Bloomberg) -- Foxconn, the company responsible for assembling most of the world\u2019s Apple Inc. iPhones, will aid the fight against the coronavirus pandemic by developing and making v"
+    },
+    {
+      "id": "d082104d2e7f",
+      "canonical_id": "Omar Ishrak",
+      "type": "PERSON",
+      "gold": 0.4,
+      "pred": 0.023,
+      "text_head": "Apple Partner Foxconn to Start Making Ventilators in U.S.. (Bloomberg) -- Foxconn, the company responsible for assembling most of the world\u2019s Apple Inc. iPhones, will aid the fight against the coronavirus pandemic by developing and making v"
+    },
+    {
+      "id": "51e9917df959",
+      "canonical_id": "FANUC",
+      "type": "ORG",
+      "gold": 0.5,
+      "pred": -0.056,
+      "text_head": "The Robots-Are-Taking-Our-Jobs Threat Gets Real. (Bloomberg Opinion) -- If there was ever a good time for the robots-taking-over-jobs argument, this may be it. Not just because factory owners don\u2019t want to pay for rising labor costs, but be"
+    },
+    {
+      "id": "51e9917df959",
+      "canonical_id": "HARMONIC",
+      "type": "ORG",
+      "gold": 0.4,
+      "pred": -0.03,
+      "text_head": "The Robots-Are-Taking-Our-Jobs Threat Gets Real. (Bloomberg Opinion) -- If there was ever a good time for the robots-taking-over-jobs argument, this may be it. Not just because factory owners don\u2019t want to pay for rising labor costs, but be"
+    },
+    {
+      "id": "7f3b6b5e8810",
+      "canonical_id": "AAPL",
+      "type": "ORG",
+      "gold": -0.4,
+      "pred": -0.035,
+      "text_head": "Little-Known Data Show Signs of a Tech Bounce. (Bloomberg Opinion) -- Buried in a set of little-known data are early signs that the hardware side of the technology sector may be rebounding from the pandemic-driven plunge.  Investors general"
+    },
+    {
+      "id": "7f3b6b5e8810",
+      "canonical_id": "FOXCONN",
+      "type": "ORG",
+      "gold": -0.4,
+      "pred": -0.03,
+      "text_head": "Little-Known Data Show Signs of a Tech Bounce. (Bloomberg Opinion) -- Buried in a set of little-known data are early signs that the hardware side of the technology sector may be rebounding from the pandemic-driven plunge.  Investors general"
+    },
+    {
+      "id": "7f3b6b5e8810",
+      "canonical_id": "TSM",
+      "type": "ORG",
+      "gold": 0.6,
+      "pred": -0.036,
+      "text_head": "Little-Known Data Show Signs of a Tech Bounce. (Bloomberg Opinion) -- Buried in a set of little-known data are early signs that the hardware side of the technology sector may be rebounding from the pandemic-driven plunge.  Investors general"
+    },
+    {
+      "id": "7f3b6b5e8810",
+      "canonical_id": "QUANTA",
+      "type": "ORG",
+      "gold": 0.4,
+      "pred": -0.063,
+      "text_head": "Little-Known Data Show Signs of a Tech Bounce. (Bloomberg Opinion) -- Buried in a set of little-known data are early signs that the hardware side of the technology sector may be rebounding from the pandemic-driven plunge.  Investors general"
+    }
+  ],
+  "examples_sign_flip": [
+    {
+      "id": "d562ea45fec8",
+      "canonical_id": "KWEICHOW_MOUTAI",
+      "type": "ORG",
+      "gold": -0.3,
+      "pred": 0.305,
+      "text_head": "Crazy Trading on China's Nasdaq Has Its Own Logic. (Bloomberg Opinion) -- Old habits die hard. China\u2019s Nasdaq-like ChiNext board has staged a comeback this year, rallying 17% to trade at an average of \u2014 yes, really \u2014 70 times earnings. Is t"
+    },
+    {
+      "id": "fb8966f143a3",
+      "canonical_id": "AAPL",
+      "type": "ORG",
+      "gold": 0.2,
+      "pred": -0.215,
+      "text_head": "Apple to Suspend New Orders to Wistron After India Workers Riot. (Bloomberg) -- Apple Inc. said it\u2019s placing a supplier in India on probation after lapses in labor practices led to rioting, and will hold off giving new orders to Wistron Cor"
+    },
+    {
+      "id": "8316022d28eb",
+      "canonical_id": "WDC",
+      "type": "ORG",
+      "gold": 0.3,
+      "pred": -0.27,
+      "text_head": "Samsung Will Offer Clues on How Covid-19 Is Roiling Global Tech. (Bloomberg) --  When Samsung Electronics Co. brass addressed analysts during its last earnings call, much of the talk revolved around finally turning the corner after years in"
+    },
+    {
+      "id": "8316022d28eb",
+      "canonical_id": "MU",
+      "type": "ORG",
+      "gold": 0.4,
+      "pred": -0.291,
+      "text_head": "Samsung Will Offer Clues on How Covid-19 Is Roiling Global Tech. (Bloomberg) --  When Samsung Electronics Co. brass addressed analysts during its last earnings call, much of the talk revolved around finally turning the corner after years in"
+    },
+    {
+      "id": "7a99b5a2220f",
+      "canonical_id": "AAPL",
+      "type": "TICKER",
+      "gold": 0.3,
+      "pred": -0.141,
+      "text_head": "Olympics delay deals setback to Samsung's plans to win over Japan market. By Hyunjoo Jin  SEOUL (Reuters) - For Samsung Electronics Co Ltd <005930.KS>, the 2020 Tokyo Olympics were going to be its springboard to attain a long-held goal - ma"
+    },
+    {
+      "id": "d5d369cddea8",
+      "canonical_id": "AAPL",
+      "type": "ORG",
+      "gold": -0.3,
+      "pred": 0.387,
+      "text_head": "Apple's $549 AirPods Max Headphones Offer Big Sound and Bugs: Review. (Bloomberg) -- The AirPods Max headphones sound terrific. For almost the price of an iPhone 11, anything less would be a major letdown.  Apple Inc.\u2019s entry into the rapid"
+    },
+    {
+      "id": "de031cf7fb12",
+      "canonical_id": "TRANSSION",
+      "type": "ORG",
+      "gold": 0.4,
+      "pred": -0.177,
+      "text_head": "China in Africa Is More Than a Land Grab. (Bloomberg Opinion) -- China has plenty to gain from lending a hand to its friends battling the coronavirus in Africa. Contrary to some perceptions, that won't mean opportunistic grabs in oil, coppe"
+    },
+    {
+      "id": "074f797e116c",
+      "canonical_id": "TSLA",
+      "type": "ORG",
+      "gold": -0.5,
+      "pred": 0.236,
+      "text_head": "An Apple-Tesla Showdown Will Happen on the Factory Floor. (Bloomberg Opinion) -- It was kind of inevitable that Tesla Inc.\u2019s biggest challenger wouldn\u2019t be a car company. Apple Inc. makes for the perfect nemesis and could teach its Californ"
+    }
+  ],
+  "calibration": [
+    {
+      "gold_bin": [
+        -1.0,
+        -0.8
+      ],
+      "n": 340,
+      "mean_gold": -0.9120882352941179,
+      "mean_pred": -0.1595730681199074
+    },
+    {
+      "gold_bin": [
+        -0.8,
+        -0.6
+      ],
+      "n": 1293,
+      "mean_gold": -0.7360788863109049,
+      "mean_pred": -0.12344531231706525
+    },
+    {
+      "gold_bin": [
+        -0.6,
+        -0.4
+      ],
+      "n": 24248,
+      "mean_gold": -0.4762627845595513,
+      "mean_pred": -0.11213203163437348
+    },
+    {
+      "gold_bin": [
+        -0.4,
+        -0.2
+      ],
+      "n": 17817,
+      "mean_gold": -0.2586425043497783,
+      "mean_pred": -0.029344387972432787
+    },
+    {
+      "gold_bin": [
+        -0.2,
+        0.0
+      ],
+      "n": 2185,
+      "mean_gold": -0.09996036613272309,
+      "mean_pred": 0.017196793310398875
+    },
+    {
+      "gold_bin": [
+        0.0,
+        0.2
+      ],
+      "n": 78813,
+      "mean_gold": 0.029380935886211667,
+      "mean_pred": 0.019799838959176714
+    },
+    {
+      "gold_bin": [
+        0.2,
+        0.4
+      ],
+      "n": 22970,
+      "mean_gold": 0.3480709621245102,
+      "mean_pred": 0.10232728854016854
+    },
+    {
+      "gold_bin": [
+        0.4,
+        0.6
+      ],
+      "n": 15228,
+      "mean_gold": 0.5297717297084318,
+      "mean_pred": 0.19138093233217138
+    },
+    {
+      "gold_bin": [
+        0.6,
+        0.8
+      ],
+      "n": 1284,
+      "mean_gold": 0.699745249221184,
+      "mean_pred": 0.26693417139645215
+    },
+    {
+      "gold_bin": [
+        0.8,
+        1.0
+      ],
+      "n": 545,
+      "mean_gold": 0.8210091743119265,
+      "mean_pred": 0.2787722172777145
+    }
+  ],
+  "calibration_plot": "outputs/eval_new_dataset/calibration.png"
+}

@@ -1,0 +1,25 @@
+{
+  "encoder_name": "allenai/longformer-base-4096",
+  "hidden_size": 768,
+  "use_ner_head": true,
+  "use_coref_head": false,
+  "use_crf_ner": true,
+  "num_ner_labels": 15,
+  "ner_label_to_id": {
+    "O": 0,
+    "B-COMPANY": 1,
+    "I-COMPANY": 2,
+    "B-TICKER": 3,
+    "I-TICKER": 4,
+    "B-PERSON": 5,
+    "I-PERSON": 6,
+    "B-ORG": 7,
+    "I-ORG": 8,
+    "B-MONEY": 9,
+    "I-MONEY": 10,
+    "B-PERCENT": 11,
+    "I-PERCENT": 12,
+    "B-DATE": 13,
+    "I-DATE": 14
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "checkpoint": "<repo>/checkpoints/stage3_sentiment_large/best_model.pt",
+    "benchmark": "<repo>/data/labeled/final/holdout_relabeled.jsonl",
+    "version": "v2",
+    "checkpoint_epoch": 0,
+    "iou_threshold": 0.5,
+    "weighted_aggregation": false,
+    "timestamp": "20260509_234109",
+    "device": "cpu",
+    "max_length": 1024,
+    "n_articles_attempted": 30,
+    "n_articles_succeeded": 30,
+    "failure_reasons": {}
+  },
+  "n_articles": 30,
+  "elapsed_seconds": 99.08507513999939,
+  "ner_metrics": {
+    "overall_all_types": {
+      "precision": 0.2761904761904762,
+      "recall": 0.025043177892918825,
+      "f1": 0.045922406967537605,
+      "tp": 29,
+      "fp": 76,
+      "fn": 1129
+    },
+    "overall_sentiment_types": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1050
+    },
+    "per_type": {
+      "DATE": {
+        "precision": 0.4375,
+        "recall": 0.11666666666666667,
+        "f1": 0.18421052631578946,
+        "tp": 7,
+        "fp": 9,
+        "fn": 53
+      },
+      "MONEY": {
+        "precision": 0.4222222222222222,
+        "recall": 0.4318181818181818,
+        "f1": 0.4269662921348315,
+        "tp": 19,
+        "fp": 26,
+        "fn": 25
+      },
+      "ORG": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 809
+      },
+      "PERCENT": {
+        "precision": 0.06818181818181818,
+        "recall": 0.75,
+        "f1": 0.125,
+        "tp": 3,
+        "fp": 41,
+        "fn": 1
+      },
+      "PERSON": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 117
+      },
+      "TICKER": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 124
+      }
+    }
+  },
+  "coverage": {
+    "n_total_gold_with_sentiment": 288,
+    "n_covered": 0,
+    "coverage_rate": 0.0
+  },
+  "sentiment_on_covered": {},
+  "per_type_sentiment": {},
+  "joint_accuracy": {
+    "tol_0.1": 0.0,
+    "tol_0.2": 0.0,
+    "tol_0.3": 0.0,
+    "tol_0.4": 0.0,
+    "tol_0.5": 0.0
+  },
+  "bucket_confusion": {},
+  "bucket_metrics": {
+    "exact_acc": 0.0,
+    "adjacent_acc": 0.0
+  },
+  "matched_preds_distribution": {}
+}

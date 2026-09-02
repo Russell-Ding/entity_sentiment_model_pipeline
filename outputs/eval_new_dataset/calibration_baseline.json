@@ -1,0 +1,60 @@
+{
+  "n_entities_total": 164723,
+  "fit_n": 82095,
+  "eval_n": 82628,
+  "affine": {
+    "a": 0.8576,
+    "b": -0.0089
+  },
+  "raw": {
+    "n": 82628,
+    "pearson": 0.4833,
+    "spearman": 0.4502,
+    "pred_std": 0.1802,
+    "gold_std": 0.3167,
+    "std_ratio": 0.5689,
+    "mae": 0.2098,
+    "mean_bias": 0.0099,
+    "over_neutral_rate": 0.3051,
+    "neutral_false_polar_rate": 0.0271,
+    "sign_flip_rate": 0.2158,
+    "very_neg_P/R/F1": "0.00/0.00/0.00",
+    "very_neg_n_gold": 816,
+    "very_pos_P/R/F1": "0.62/0.00/0.01",
+    "very_pos_n_gold": 3323
+  },
+  "affine_calibrated": {
+    "n": 82628,
+    "pearson": 0.4833,
+    "spearman": 0.4502,
+    "pred_std": 0.1545,
+    "gold_std": 0.3167,
+    "std_ratio": 0.4879,
+    "mae": 0.2101,
+    "mean_bias": -0.0026,
+    "over_neutral_rate": 0.3541,
+    "neutral_false_polar_rate": 0.0118,
+    "sign_flip_rate": 0.2044,
+    "very_neg_P/R/F1": "0.00/0.00/0.00",
+    "very_neg_n_gold": 816,
+    "very_pos_P/R/F1": "0.00/0.00/0.00",
+    "very_pos_n_gold": 3323
+  },
+  "isotonic_calibrated": {
+    "n": 82628,
+    "pearson": 0.4847,
+    "spearman": 0.45,
+    "pred_std": 0.156,
+    "gold_std": 0.3167,
+    "std_ratio": 0.4924,
+    "mae": 0.2081,
+    "mean_bias": -0.0027,
+    "over_neutral_rate": 0.3833,
+    "neutral_false_polar_rate": 0.0141,
+    "sign_flip_rate": 0.1988,
+    "very_neg_P/R/F1": "0.00/0.00/0.00",
+    "very_neg_n_gold": 816,
+    "very_pos_P/R/F1": "0.00/0.00/0.00",
+    "very_pos_n_gold": 3323
+  }
+}

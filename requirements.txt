@@ -1,0 +1,26 @@
+# Core ML dependencies
+torch>=2.0.0
+transformers>=4.36.0
+accelerate>=0.25.0
+sentencepiece
+protobuf
+
+# Data collection
+yfinance>=0.2.0
+requests>=2.28.0
+beautifulsoup4>=4.12.0
+
+# Coreference resolution (optional)
+# Note: fastcoref may not fully support MPS, will fall back to CPU
+fastcoref>=0.2.0
+
+# Sentiment labeling (optional)
+anthropic>=0.18.0
+
+# Utilities
+tqdm
+numpy
+pandas
+
+# Development
+pytest
