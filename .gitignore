@@ -6,6 +6,47 @@ config/secrets.yaml
 # ---- Local-only archive (working files kept out of the public repo) ----
 _archive_local/
 
+# ---- Not part of the public release (kept on disk / in Drive; see CLAUDE.md) ----
+# private technical notes and their reviews
+/docs/private/
+# training procedure: scripts, loop, launchers, guides
+/scripts/training/
+/training/trainer.py
+/notebooks/colab_training_setup.ipynb
+/notebooks/COLAB_SETUP.md
+/notebooks/full_pipeline_launcher.ipynb
+/notebooks/retrain_ablation_launcher.ipynb
+/notebooks/stage1_launcher.ipynb
+/notebooks/stage2_fresh.ipynb
+/notebooks/stage2_launcher.ipynb
+/notebooks/stage2_resume.ipynb
+/notebooks/stage3_launcher.ipynb
+/notebooks/stage3_launcher_v2retrain.ipynb
+/notebooks/stage3_sentiment_only.ipynb
+/docs/RETRAIN_GUIDE.md
+/docs/retrain_comparison.md
+/docs/second_phase_retrain_plan.md
+/docs/ccc_huber_loss_explained.md
+/docs/ccc_huber_loss_explained.pdf
+/docs/global_attn_dropout_proposal.pptx
+/docs/architecture_spec.md
+/outputs/training_curves_large.png
+/outputs/stage3_training_curves.png
+/outputs/v1_vs_v2_attention.png
+# data collection, source tiering and labelling pipeline
+/scripts/collection/
+/scripts/labeling/
+/scripts/preprocessing/
+/scripts/data/
+/scripts/analysis/validate_source_rules.py
+/data_collection/
+/config/
+/docs/NEWS_CLASSIFICATION_PIPELINE.md
+/outputs/candidate_source_rules.json
+/outputs/source_rules_v*.json
+/outputs/rule_validation_report*.json
+/data/DATASET_README.md
+
 # ---- Python ----
 __pycache__/
 *.py[cod]
@@ -47,6 +88,12 @@ outputs/e2e_evaluation/*_predictions_*.jsonl
 outputs/eval_new_dataset/*_predictions_*.jsonl
 logs/
 *.log
+
+# ---- LaTeX build files ----
+docs/*.aux
+docs/*.out
+docs/*.toc
+docs/*.synctex.gz
 
 # ---- Notebooks / IDE / OS ----
 .ipynb_checkpoints/

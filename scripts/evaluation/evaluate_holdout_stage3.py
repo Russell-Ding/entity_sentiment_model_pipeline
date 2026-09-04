@@ -49,7 +49,7 @@ from training.preprocessing import (
     SENTIMENT_ENTITY_TYPES,
 )
 from training.dataset import EntitySentimentDataset, collate_fn
-from training.trainer import compute_ner_metrics, compute_sentiment_metrics
+from training.metrics import compute_ner_metrics, compute_sentiment_metrics
 
 # ---------------------------------------------------------------------------
 # Defaults

@@ -8,6 +8,14 @@
 > including the first-pass conclusion that later proved wrong — because the
 > correction is the point. All conclusions were verified by the author.
 
+> **Correction (2026-09-03).** The per-article scores used throughout this study were
+> produced by the **v2.0** checkpoint (`trained_model/v2.0_20260517`), not v2.1 as the
+> text below says: the inference outputs are dated 24 May – 7 June 2026 (v2.1 was
+> packaged on 20 June), `notebooks/inference_launcher.ipynb` hard-codes the v2.0
+> checkpoint, and re-scoring stored articles reproduces the saved values exactly with
+> v2.0 only. Read "v2.1" below as "v2.0". No number changes; re-running the study on
+> v2.1 scores is an open item (`docs/project_report.pdf`, Section 6.7).
+
 **Verdict (updated after the MOC follow-up and external review):** The v2.1
 entity-sentiment signal **does not predict returns — it explains them.** The
 first-pass headline ("genuinely predictive but untradable") was wrong: the IC /

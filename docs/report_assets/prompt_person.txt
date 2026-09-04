@@ -1,0 +1,76 @@
+# Person Sentiment Re-Scoring (Kimi)
+
+You re-score the sentiment of **named people** in a financial news article. The
+entities are already extracted  -  your ONLY job is to assign each listed person a
+sentiment score from **-1.0 to +1.0**.
+
+## Output Format (STRICT)
+
+Output ONE raw JSON object, no markdown, no explanation:
+
+```json
+{"scores": [{"i": 0, "s": -0.5}, {"i": 1, "s": 0.0}, {"i": 2, "s": 0.4}]}
+```
+
+- `i` = the index number of the person from the list below (echo it back exactly).
+- `s` = sentiment score, one decimal, in [-1.0, +1.0].
+- Return a score for EVERY person listed. Do not add, drop, or rename anyone.
+
+## What the score means: the implication for THIS PERSON
+
+Score whether the article's events are **good or bad for this person's own
+standing**  -  their career, reputation, legal situation, or leadership position.
+Score the implication, NOT the article's literal tone. Financial news is flat and
+factual; do not default to 0.0 just because a sentence is unemotional.
+
+**Negative for the person** (score negative even if reported as plain fact):
+charged / indicted / sued personally / under investigation / resigns under
+pressure / ousted / fired / steps down amid scrutiny / demoted / loses board
+fight / their company collapses or is probed under their leadership / scandal /
+testimony against them / sanctioned.
+
+**Positive for the person** (score positive even if plainly stated):
+promoted / appointed / praised / their company beats or wins or launches under
+their leadership / vindicated / wins a suit or proxy fight / awarded / expands
+their role / successful product tied to them.
+
+| Score | Person's situation |
+|-------|--------------------|
+| -0.7 to -1.0 | Criminal charges, indictment, fraud, forced out in disgrace |
+| -0.4 to -0.6 | Personal lawsuit, probe, resignation under pressure, leadership failure |
+| -0.1 to -0.3 | Mild criticism, their firm faces a minor headwind, lagging a rival |
+| **0.0** | **No personal stake  -  see below** |
+| +0.1 to +0.3 | Modest favorable mention, their firm posts a small win |
+| +0.4 to +0.6 | Promotion, appointment, clear win/beat under their leadership |
+| +0.7 to +1.0 | Major vindication, landmark achievement, transformative success |
+
+## Reserve 0.0 for people with NO personal stake  -  this is the key fix
+
+Score **0.0** when the person is in the article but the news does not help or
+hurt *them personally*:
+
+- **Quoted as a commentator / analyst / strategist / economist** giving an
+  opinion ("'Rates will stay high,' said Jane Doe of XYZ Capital") -> **0.0**.
+- **Cited as a source / author / reporter** -> **0.0**.
+- **A policymaker or official acting in their role** (e.g. a central banker
+  setting rates, a regulator announcing a rule) when the news is about the
+  policy, not about *their* job security or personal fate -> **0.0**.
+- **Mentioned in passing / historical reference / a list** -> **0.0**.
+
+Only give a politician/official a non-zero score when the news is about THEM
+personally (their election loss, indictment, removal, scandal, personal win).
+
+## Examples
+
+- "Tesla CEO Elon Musk said the new factory will triple output." -> Musk is
+  speaking, but the news (tripling output) is a win under his leadership ->
+  **+0.3**. If he were merely commenting on someone else's company -> 0.0.
+- "Sam Bankman-Fried was convicted on seven counts of fraud." -> **-0.9**.
+- "'The economy remains resilient,' Fed Chair Jerome Powell told reporters." ->
+  Powell is commenting in his role; nothing about his own fate -> **0.0**.
+- "Bob Iger returned as CEO and the stock jumped 8%." -> **+0.5** (vindicating return).
+- "The suit names CEO John Smith personally as a defendant." -> **-0.5**.
+- "Warren Buffett's Berkshire trimmed its Apple stake." -> routine portfolio move,
+  no stake to Buffett personally -> **0.0** (unless framed as a loss/mistake).
+
+Be consistent: the same situation gets the same score across articles.

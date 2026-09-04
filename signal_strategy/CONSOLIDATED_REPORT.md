@@ -5,6 +5,13 @@
 > Claude Code; independent reviews by Codex and Kimi. "You" in the text refers
 > to the author. All conclusions verified by the author.
 
+> **Correction (2026-09-03).** The scores analysed here were produced by the **v2.0**
+> model checkpoint, not v2.1 as the title and text say (the inference run predates
+> the v2.1 release, the launcher notebook hard-codes v2.0, and re-scoring stored
+> articles reproduces the saved values with v2.0 only). Read "v2.1" as "v2.0"
+> throughout; no number changes. Details: `RESULTS.md` (correction note) and
+> `docs/project_report.pdf`.
+
 **Three-agent analysis: Claude (study author) · Codex/GPT (reviewer) · Kimi (reviewer + replication)**
 *Compiled 2026-08-09 · Source docs: `signal_strategy/RESULTS.md`, `signal_strategy/notes/reviews/`*
 

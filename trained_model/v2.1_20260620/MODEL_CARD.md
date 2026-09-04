@@ -32,7 +32,9 @@ ranking gain on foreign data. Freezing the encoder (this model) avoids both.
 
 ## Training
 
-- **Base:** v2.0_20260517 checkpoint (encoder + NER frozen; sentiment head re-init/retrained).
+- **Base:** v2.0_20260517 checkpoint (encoder + NER frozen; sentiment head **warm-started
+  from the v2.0 head** and retrained — an earlier version of this card said "re-init"; see
+  Corrections below).
 - **Loss:** `ccc_huber` (`models/sentiment_head.py::configure_loss`); select best by CCC.
 - **Data:** `data/labeled/deepseek_t1/splits/` — 30,131 T1 articles (after near-dup
   dedup) split **by article id** into train 27,015 / val 1,558 / test 1,558 (disjoint).
@@ -101,3 +103,25 @@ TICKER sentiment is strongest (r 0.81) and most suitable for ticker→returns si
 `model.pt` (weights + metadata), `config.json`, `tokenizer/`,
 `evaluation_results_e2e.json` (in-distribution test). Load with the same path as
 v2.0 in `scripts/evaluation/evaluate_e2e_pipeline.py` / `scripts/inference/`.
+
+## Corrections (2026-09-03)
+
+Two facts established while documenting the model structure; neither changes any
+number above.
+
+1. **The sentiment head was warm-started, not re-initialised.** The retrain script
+   loads the full v2.0 state dict and never resets the head; the run ledger's
+   pre-training baseline (val CCC 0.4147) is the v2.0 head's own score. The v2.0
+   Stage-3 head, by contrast, really was initialised fresh.
+2. **The CRF transition scores never trained (v2.0 and v2.1 alike).** All 225
+   transition and 30 start/end scores lie within ±0.11 (the library's init range) and
+   the −1e4 BIO constraints are absent, because the Stage-1/2 training script built
+   the head without the label map and the constraints written at load time are
+   overwritten by the checkpoint. Emissions dominate (Viterbi = per-token argmax on
+   >99% of tokens), so the tagger is effectively emission-only with span repair by the
+   lenient decoder. Reproduce with `scripts/analysis/inspect_ner_head.py`. A future
+   retrain should pass `ner_label_to_id` at model construction and give the CRF
+   parameters their own learning rate.
+
+**Note on the signal study:** the `signal_strategy/` scores were produced by the
+v2.0 checkpoint, not this one (see the correction note in `signal_strategy/RESULTS.md`).

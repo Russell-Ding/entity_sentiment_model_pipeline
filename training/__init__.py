@@ -18,13 +18,19 @@ from .dataset import (
     get_label_weights,
 )
 
-from .trainer import (
-    JointTrainer,
-    TrainingConfig,
-    TrainingState,
+from .metrics import (
     compute_ner_metrics,
     compute_sentiment_metrics,
 )
+
+try:  # the training loop (trainer.py) is not part of the public release
+    from .trainer import (
+        JointTrainer,
+        TrainingConfig,
+        TrainingState,
+    )
+except ImportError:  # pragma: no cover
+    JointTrainer = TrainingConfig = TrainingState = None  # type: ignore[assignment]
 
 __all__ = [
     # Preprocessing

@@ -1,14 +1,19 @@
 # Financial Entity Sentiment → Trading Signal
 
 **An end-to-end, independently built research pipeline:** a Longformer-based model that reads
-financial news and scores sentiment *per entity* (companies, tickers, people), trained on
-~30k LLM-labeled articles — followed by a rigorous test of whether those scores carry a
-tradable signal for S&P 500 stocks.
+financial news and scores sentiment *per entity* (companies, tickers, people), trained by
+distillation from ~30k LLM-labelled articles — followed by a rigorous test of whether those
+scores carry a tradable signal for S&P 500 stocks.
 
-The short answer to the trading question is **no** — and the repo is organised around
+The short answer to the trading question is **no** — and the project is organised around
 showing *how* that answer was reached honestly, including the look-ahead bias that made
 the first pass look like a Sharpe-2.9 strategy, the point-in-time correction that killed
 it, and the one result that survived (sentiment intensity predicts next-day volatility).
+
+**Start with the report:** [`docs/project_report.pdf`](docs/project_report.pdf) covers the
+model structure, the training procedure, the sentiment-prediction validation, the return and
+volatility tests, and (in the appendix) the labelling prompts. This README is the map of the
+repository.
 
 > Everything here was built on my own time, on my own hardware/Colab, with my own data
 > subscription. No employer code or data is involved.
@@ -17,7 +22,7 @@ it, and the one result that survived (sentiment intensity predicts next-day vola
 
 ## Headline results
 
-**Model (v2.1, entity-level sentiment, in-distribution test — 1,558 articles / 8,078 entities)**
+**Model (entity-level sentiment, in-distribution test — 1,558 articles / 8,078 entities)**
 
 | Metric | v2.0 | **v2.1** |
 |---|---|---|
@@ -25,8 +30,13 @@ it, and the one result that survived (sentiment intensity predicts next-day vola
 | Concordance corr. (CCC) | 0.416 | **0.641** |
 | pred/label std ratio | 0.57 | **1.03** — magnitude compression fixed |
 | TICKER / ORG / PERSON r | 0.62 / 0.49 / 0.49 | **0.81 / 0.63 / 0.68** |
+| Entity coverage of the end-to-end pipeline (same tagger) | 48.9% | 48.4% |
 
-**Signal study (502 S&P 500 names, 2020-03 → 2025-12, 60,888 ticker-days)**
+(The v2.0 column is measured on the full new-label set, v2.1 on the held-out test split;
+see report §5.)
+
+**Signal study (502 S&P 500 names, 2020-03 → 2025-12, 60,888 ticker-days; scores from the
+v2.0 checkpoint)**
 
 | Test | Naïve panel | Point-in-time panel (15:45 ET cutoff) |
 |---|---|---|
@@ -35,197 +45,150 @@ it, and the one result that survived (sentiment intensity predicts next-day vola
 | L/S quintile, H=1, close entry | Sharpe **+2.93** (look-ahead) | Sharpe **−0.55** (implementable MOC) |
 | \|sentiment\| → next-day \|return\|, controlling for trailing vol | — | **rank-IC +0.024 (t 5.3)** — survives |
 
-Full details: [`signal_strategy/RESULTS.md`](signal_strategy/RESULTS.md) and the consolidated
-three-reviewer write-up [`signal_strategy/CONSOLIDATED_REPORT.md`](signal_strategy/CONSOLIDATED_REPORT.md).
+Full details: report §6, [`signal_strategy/RESULTS.md`](signal_strategy/RESULTS.md) and the
+consolidated three-reviewer write-up
+[`signal_strategy/CONSOLIDATED_REPORT.md`](signal_strategy/CONSOLIDATED_REPORT.md).
 
 ---
 
 ## Part 1 — The NLP model
 
-### Task
-
-Given a full news article, find every financial entity (COMPANY, TICKER, PERSON, ORG, plus
-MONEY / PERCENT / DATE spans) and output a sentiment score in [−0.95, 0.95] for each
+**Task.** Given a full news article, find every financial entity (ORG, TICKER, PERSON, plus
+MONEY / PERCENT / DATE spans) and output a sentiment score in (−0.95, 0.95) for each
 sentiment-bearing entity. The score is the *implication for that entity*, not the tone of
-the article — an article about a lawsuit is negative for the defendant and neutral for the
-court.
+the article — a lawsuit is negative for the defendant and neutral for the court.
 
-### Data
-
-* **Corpus:** 1.69M EODHD news articles covering the S&P 500 universe
-  ([`scripts/collection/`](scripts/collection/)).
-* **Source tiering:** every article is tagged T1/T2/T3 + a content type (earnings release,
-  analyst call, market wrap, syndicated PR, …) by an LLM-labeled 5k sample distilled into
-  regex rules ([`docs/NEWS_CLASSIFICATION_PIPELINE.md`](docs/NEWS_CLASSIFICATION_PIPELINE.md),
-  [`outputs/source_rules_v4.json`](outputs/source_rules_v4.json)). Tiers drive sampling and
-  loss weighting.
-* **Labels:** LLM-generated entity spans + sentiment via knowledge distillation (Claude Haiku
-  for v1.0, Claude Sonnet relabels for v2.0, DeepSeek with a *decisive* prompt + Kimi for
-  PERSON re-scoring for v2.1), with quality
-  guardians, near-duplicate dedup and article-id-disjoint train/val/test splits
-  ([`data_label_criteria/`](data_label_criteria/), [`scripts/labeling/`](scripts/labeling/)).
-  v2.1 trains on 27,015 / 1,558 / 1,558 articles.
-* **Data are not redistributed** (EODHD terms). [`data/DATASET_README.md`](data/DATASET_README.md)
-  documents the schema and composition; the collection and labeling scripts reproduce it
-  with your own keys.
-
-### Architecture ([`models/`](models/))
+**Architecture** ([`models/`](models/), report §3):
 
 ```
 article ──► Longformer-large-4096 (shared encoder, 2048 tokens, global attention on entity tokens)
                  │
         ┌────────┴────────┐
-   NER head (CRF,       Sentiment head (V2 cross-attention:
+   NER head (CRF,       Sentiment head (cross-attention:
    15 BIO labels)       entity tokens query the whole document) ──► tanh · 0.95
 ```
 
-* Longformer over ModernBERT/BERT because articles routinely exceed 512 tokens and the
-  sentiment for an entity often lives far from its mention.
-* NER is a CRF-decoded BIO tagger; the sentiment head attends from each entity's mention
-  tokens over the full document. ~439M parameters, 4.8M in the sentiment head.
-* Design spec: [`docs/architecture_spec.md`](docs/architecture_spec.md).
+~439M parameters, 4.8M in the sentiment head. At inference the encoder runs twice per
+article: once with CLS-only global attention to tag entities, once with global attention on
+the predicted entity tokens to score them.
 
-### Training — three stages ([`scripts/training/train_pipeline.py`](scripts/training/train_pipeline.py))
+**Training** (report §4; the training code itself is not included): three stages on a single
+Colab GPU — NER-only with *global-attention dropout* (the fix for a train/test attention-regime
+mismatch that had collapsed end-to-end NER F1 to 0.05), joint training with a curriculum, then a
+sentiment-head-only stage — followed by a head-only retrain (v2.1) on more decisive labels with a
+magnitude-weighted Huber + (1 − CCC) + sign-penalty loss that replaced MSE + (1 − Pearson).
 
-| Stage | Trains | Key idea |
-|---|---|---|
-| 1 · NER | encoder + NER head | **Global-attention dropout** (p=0.3, warm-up 30%) — the fix for a train/test regime mismatch that had collapsed end-to-end NER F1 from 0.74 (gold entity positions) to 0.05 (no gold positions). Randomly hiding the entity-aware global attention during training forces the encoder to work from CLS-only attention too. [`docs/global_attn_dropout_proposal.pptx`](docs/global_attn_dropout_proposal.pptx) |
-| 2 · Joint | all | curriculum: NER weight 1.0→0.5, sentiment 0.3→1.0 |
-| 3 · Sentiment | sentiment head only (encoder + NER frozen) | v2.1 loss: **magnitude-weighted Huber + (1 − CCC) + sign penalty**, replacing MSE + (1 − Pearson). Pearson is scale-invariant so it never penalised the head's ⅓-magnitude "hedging"; CCC does. Derivation: [`docs/ccc_huber_loss_explained.pdf`](docs/ccc_huber_loss_explained.pdf) |
+**Labels** (report §2, prompts in the appendix and in [`data_label_criteria/`](data_label_criteria/)):
+LLM-generated entity spans and scores — Claude Haiku (v1.0), Claude Sonnet relabels (v2.0),
+DeepSeek with a *decisive* prompt plus Kimi PERSON re-scoring (v2.1) — with near-duplicate
+removal, article-id-disjoint splits and a label-noise audit.
 
-The v2.1 retrain was run as a **5-arm ablation** (frozen encoder vs. unfreezing the top-2
-layers, loss variants). The unfrozen arm scored marginally higher in-distribution but was
-rejected for NER catastrophic forgetting (PERSON F1 −6.8%) and calibration drift
-off-distribution — [`docs/retrain_comparison.md`](docs/retrain_comparison.md).
-
-Runs on a single Colab GPU via the launchers in [`notebooks/`](notebooks/);
-[`docs/RETRAIN_GUIDE.md`](docs/RETRAIN_GUIDE.md) is the operational runbook.
-
-### Evaluation and known limits
-
-* End-to-end evaluation (raw text → NER → sentiment, IoU-matched to gold) in
-  [`scripts/evaluation/evaluate_e2e_pipeline.py`](scripts/evaluation/evaluate_e2e_pipeline.py);
-  per-version numbers in [`trained_model/*/MODEL_CARD.md`](trained_model/).
-* A label-noise audit of high-confidence model↔label disagreements found ~1 clear label error
-  in 24 adjudicated cases — the gains are real, not fitted noise
-  ([`outputs/control_label_audit.md`](outputs/control_label_audit.md)).
-* **Honest limits:** NER recall is the bottleneck (entity coverage ~0.48 e2e); the model still
-  anchors on negative keywords when the entity *won* a dispute; secondary/list-style mentions
-  are under-read. Cross-distribution, sentiment degrades gracefully (r 0.61, spread still
-  calibrated, +0.06 mean bias).
+**Evaluation** ([`scripts/evaluation/`](scripts/evaluation/), report §5): end-to-end evaluation
+(raw text → NER → sentiment, IoU-matched to gold) in
+[`evaluate_e2e_pipeline.py`](scripts/evaluation/evaluate_e2e_pipeline.py); per-version numbers
+in [`trained_model/*/MODEL_CARD.md`](trained_model/) and
+[`outputs/`](outputs/). Known limits: NER recall is the bottleneck (entity coverage ~0.42–0.49
+end to end); the model still anchors on negative keywords when the entity *won* a dispute;
+secondary mentions are under-read; the CRF transition parameters never trained in v2.x (the
+tagger is effectively emission-only — see the model cards).
 
 ---
 
 ## Part 2 — Does the sentiment predict returns?
 
-[`signal_strategy/`](signal_strategy/) — a self-contained study, reproducible with
-`python3 signal_strategy/src/run_all.py`.
+[`signal_strategy/`](signal_strategy/) — a self-contained study (report §6), reproducible with
+`python3 signal_strategy/src/run_all.py` given the inference outputs and EODHD prices.
 
-### Setup
+**Setup.** 118,033 tier-1 articles scored by the v2.0 checkpoint → per-ticker, per-day
+mention-weighted sentiment (`sent_mw`) → joined to EODHD adjusted prices for 502 names,
+2020-03-23 → 2025-12-31. Forward returns at 1 / 5 / 20 days. (The tier-1 set still contains
+~14.5k paywall stubs from one wire service that were marked for demotion but never re-tiered;
+the per-ticker daily series filters them, this panel does not.)
 
-118,033 tier-1 articles scored by v2.1 → per-ticker, per-day mention-weighted sentiment
-(`sent_mw`) → joined to EODHD adjusted prices for 502 names, 2020-03-23 → 2025-12-31
-(median 45 names/day with news). Forward returns at 1 / 5 / 20 days.
+**Method** (each step its own script in [`signal_strategy/src/`](signal_strategy/src/)):
+information coefficient with Newey-West t-stats; Fama-MacBeth regressions with size and
+momentum controls; event study; quintile long-short backtest with next-open vs. close entry
+and 5/10 bps costs; a market-on-close feasibility audit that checks every article's
+publication time against a 15:45 ET cutoff.
 
-### Method (standard cross-sectional toolkit, each step its own script)
+**What happened.** The first pass looked like a clean success (IC +0.020, a +36 bps day-one
+quintile spread, close-entry Sharpe 2.9), but the tradable next-open version was negative — the
+whole edge sat in the overnight gap. Auditing timestamps showed that ~25% of articles, including
+the 4–6 pm earnings spike, had been assigned a `trade_date` whose close preceded publication.
+Rebuilt with an honest knowability cutoff, the IC is ≈ 0 at every horizon and every daily-bar
+execution tested loses money: **the market absorbs this news faster than daily bars can act.**
+One channel — pre-market news traded at that same day's open — was never tested, so the claim is
+"no detected edge", not "edge is exactly zero". Two things survive: the model is a good
+*measurement* instrument (its scores align with the contemporaneous overnight reaction), and
+sentiment **magnitude** predicts next-day **volatility** beyond trailing realised vol (rank-IC
++0.024, NW t 5.3; +0.019, t 3.7 with same-day |return| as an extra control) — a promising
+candidate feature, not a hardened one.
 
-1. **Information coefficient** — daily Spearman rank IC, Newey-West t-stats, IC-IR.
-2. **Fama-MacBeth** — daily cross-sectional regressions with size and 1m/12m momentum controls.
-3. **Event study** — cumulative abnormal returns around extreme-sentiment days, top vs. bottom quintile.
-4. **Long-short backtest** — daily quintile portfolios, next-open vs. close entry, 5/10 bps costs, turnover, 70/30 date split.
-5. **MOC feasibility audit** — every article's publication timestamp converted to New York time and tested against a 15:45 ET market-on-close cutoff.
-6. **Literature grounding** — [`research/literature_review.md`](signal_strategy/research/literature_review.md).
-
-### What happened
-
-The first pass looked like a clean success: IC +0.020 (t 3.7), Fama-MacBeth +10 bps/σ
-surviving controls, a +36 bps day-one quintile spread, and a close-entry backtest with gross
-Sharpe 2.9. But the *tradable* next-open version was **negative** — the whole edge sat in the
-overnight gap.
-
-Auditing publication timestamps explained it: **~25% of articles (including the 4–6 pm
-earnings-release spike) had been assigned a `trade_date` whose close preceded publication.**
-The model wasn't forecasting Tuesday; it was reading Monday-evening news that Monday's
-close couldn't know and Tuesday's open had already priced. Rebuilt with an honest
-knowability cutoff, the IC is ≈ 0 at every horizon and every executable daily-bar variant
-(MOC close-to-close, next-open for after-hours news) loses money. **The market absorbs
-this news faster than daily bars can act.**
-
-Two things survive: (a) the model is a good *measurement* instrument — its scores align
-strongly with the contemporaneous overnight reaction, which is useful for attribution and
-monitoring; (b) sentiment **magnitude** predicts next-day **volatility** beyond trailing
-realised vol (rank-IC +0.024, NW t 5.3; +0.019, t 3.7 with same-day |return| as an extra
-control) — a non-directional signal suited to risk overlays and position sizing.
-
-### Review process
-
-The study was reviewed read-only by two independent model-based reviewers (Codex and Kimi);
-Kimi re-ran the key numbers from the artifacts on disk. Both independently reached the
-look-ahead diagnosis, confirmed the volatility result, and flagged further weaknesses
-(event-study independence, a post-treatment size control, survivorship in the universe, the
-correction not being a committed script). The raw reviews are in
-[`signal_strategy/notes/reviews/`](signal_strategy/notes/reviews/) and the reconciled view in
-[`CONSOLIDATED_REPORT.md`](signal_strategy/CONSOLIDATED_REPORT.md). The open items there are
-the honest to-do list, not a claim of closure.
+**Review.** The study was reviewed read-only by two independent model-based reviewers (Codex
+and Kimi); Codex diagnosed the timing problem before the corrected numbers existed, and Kimi
+re-ran the key numbers from the artifacts on disk and replicated the volatility result. Raw
+reviews in
+[`signal_strategy/notes/reviews/`](signal_strategy/notes/reviews/); reconciled view in
+[`CONSOLIDATED_REPORT.md`](signal_strategy/CONSOLIDATED_REPORT.md). The open items there
+(commit the feasible-panel script, test pre-market news at the open, check the 2023–24
+reversal hint, point-in-time membership, re-score with v2.1) are the honest to-do list.
 
 ---
 
 ## Repository layout
 
 ```
-models/                 Longformer encoder, CRF NER head, coref wrapper, V2 sentiment head, pipeline
-training/               dataset / preprocessing / trainer
+docs/                   project_report.{tex,pdf}; report_assets/ (ASCII copies of the prompts for the appendix)
+models/                 Longformer encoder, CRF NER head, coref wrapper, cross-attention sentiment head, pipeline
+training/               preprocessing (label schema, mention→token alignment), dataset (batching), metrics
 scripts/
-  collection/           EODHD bulk news + price collection, S&P 500 universe
-  preprocessing/        source tiering, training-subset construction
-  labeling/             LLM labeling (DeepSeek, Kimi), PERSON re-scoring, quality guardian
-  training/             3-stage pipeline, sentiment-arm ablations
-  evaluation/           end-to-end eval, calibration baseline, arm comparison, disagreement audit
-  inference/            batch inference over retiered news → per-article entity/ticker sentiment
-  postprocessing/       ticker alias resolution, daily ticker sentiment, returns mapping
-data_label_criteria/    the labeling specs & prompts (entity spec v2, decisive relabeling prompt, PERSON prompt)
-data_collection/        earlier collectors (NewsAPI, Yahoo, SEC EDGAR)
-config/                 config loader + secrets template
-docs/                   architecture spec, retrain guide, news-classification pipeline, loss derivation,
-                        retrain plan & ablation comparison, global-attention-dropout proposal
-trained_model/          model cards, configs and e2e metrics for v1.0 / v2.0 / v2.1 (weights not included)
-outputs/                training curves, calibration, label audit, source rules, e2e metric summaries
-notebooks/              Colab launchers (outputs stripped)
+  evaluation/           end-to-end eval, gold-mask eval, calibration baseline, gap analysis, arm comparison, audit
+  inference/            batch inference over retiered news → per-article entity sentiment (default checkpoint v2.0)
+  postprocessing/       ticker alias resolution, per-article/daily ticker sentiment, leakage-safe returns mapping
+  analysis/             inspect_ner_head.py — reproduces the CRF-transition diagnostics
 signal_strategy/        the signal study: src/, outputs/ (metrics + plots), reports, literature review, reviews
+trained_model/          model cards, configs and e2e metrics for v1.0 / v2.0 / v2.1 (weights not included)
+outputs/                e2e evaluation summaries, calibration, gap analysis, label audit, corpus-coverage notes
+data_label_criteria/    the labelling spec and prompts (entity spec v2, decisive prompt, PERSON prompt)
+data/reference/         alias table and non-company blocklist used for ticker resolution
+notebooks/              Colab launchers for inference and the two evaluations (outputs stripped)
 ```
 
----
+**Not included in this repository:** the news and price data (EODHD terms), the LLM label
+files, model weights (~1.8 GB per version), the inference outputs and panels derived from the
+news data, and the data-collection, labelling and model-training code. The label
+specification and prompts, the model cards with their metrics, and all evaluation and
+signal-study code are here, so every number in the report can be traced to the script that
+produced it.
 
-## Reproducing
+## Using the code
 
 ```bash
 pip install -r requirements.txt
-cp config/secrets.yaml.template config/secrets.yaml     # or export EODHD_API_KEY / ANTHROPIC_API_KEY …
 
-# 1. Data (needs an EODHD subscription)
-python3 scripts/collection/fetch_sp500_universe.py
-python3 scripts/collection/collect_eodhd_sp500_bulk.py --help
-python3 scripts/preprocessing/apply_source_tiers.py --help
+# Score a news file with a checkpoint (weights not included)
+python3 scripts/inference/infer_entity_sentiment.py --input <articles.jsonl.gz> \
+    --output <out.jsonl> --checkpoint trained_model/v2.1_20260620/model.pt
 
-# 2. Labels (DeepSeek / Kimi API keys)
-bash scripts/labeling/run_deepseek_labeling.sh
-python3 scripts/data/split_new_dataset.py --help
-
-# 3. Train (Colab GPU) — see docs/RETRAIN_GUIDE.md and notebooks/full_pipeline_launcher.ipynb
-python3 scripts/training/train_pipeline.py --help
-python3 scripts/training/train_sentiment_arm.py --arm control
-
-# 4. Evaluate / infer
+# End-to-end evaluation against a labelled file
 python3 scripts/evaluation/evaluate_e2e_pipeline.py --help
-python3 scripts/inference/infer_entity_sentiment.py --input <retiered.jsonl> --output <out.jsonl>
 
-# 5. Signal study
-python3 signal_strategy/src/run_all.py            # ~7 min; --skip-panel to reuse panel.parquet
+# Reproduce the CRF diagnostics quoted in the model cards
+python3 scripts/analysis/inspect_ner_head.py --help
+
+# Signal study (needs outputs/inference/*_enriched.jsonl and EODHD prices; see signal_strategy/src/config.yaml)
+python3 signal_strategy/src/run_all.py
 ```
 
-**Not included in this repo:** raw news and price data (EODHD terms), LLM label files,
-model weights (~1.8 GB per version), and the inference outputs / panels derived from the
-news data. Everything needed to regenerate them is here.
+Load the model in Python with `models.pipeline.FinancialEntitySentimentModel` (see the usage
+block in [`trained_model/v2.0_20260517/MODEL_CARD.md`](trained_model/v2.0_20260517/MODEL_CARD.md)).
+
+## Corrections log
+
+- **2026-09-03** — The `signal_strategy/` scores were produced by the v2.0 checkpoint, not
+  v2.1 (correction notes at the top of the study documents). The v2.1 sentiment head was
+  warm-started from the v2.0 head, not re-initialised. The CRF transition parameters in v2.0
+  and v2.1 never trained. Details in the model cards and report §4.
 
 ## License
 

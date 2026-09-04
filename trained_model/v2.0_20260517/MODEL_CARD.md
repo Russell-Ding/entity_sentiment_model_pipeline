@@ -164,6 +164,12 @@ model.cuda()
 
 ## Known Limitations
 
+0. **CRF transitions untrained (found 2026-09-03).** The CRF's transition and
+   start/end scores are still at their random initial values (all within ±0.11) and
+   the BIO constraints were never installed, because `train_two_stage.py` built the
+   head without the label map. Viterbi equals per-token argmax on >99% of tokens; the
+   tagger is effectively emission-only and BIO validity comes from the lenient span
+   decoder. Reproduce with `scripts/analysis/inspect_ner_head.py`.
 1. **NER recall is conservative (0.34 e2e)** — model is high-precision, low-recall. Trade-off from global-attention dropout that bought us inference-regime robustness.
 2. **PERCENT NER overfires** (P=0.19) — the head fires on every "%" sign without context. Not sentiment-bearing so doesn't affect product, but indicates brittle lexical-cue behavior.
 3. **PERSON sentiment quality lower than ORG/TICKER** (r=0.41 vs 0.60/0.77) — root cause unclear (label noise vs structural).

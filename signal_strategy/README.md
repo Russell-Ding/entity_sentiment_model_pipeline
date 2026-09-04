@@ -1,6 +1,10 @@
 # signal_strategy/
 
-Exploration of whether v2.1 model-derived entity/ticker sentiment can drive a stock-trading signal.
+Exploration of whether model-derived entity/ticker sentiment can drive a stock-trading signal.
+
+> **Correction (2026-09-03).** The scores used by this study came from the **v2.0**
+> checkpoint, not v2.1 as the documents below say (see the note at the top of
+> `RESULTS.md`). Read "v2.1" as "v2.0"; no number changes.
 
 ## Layout
 - `RESULTS.md` — **first-pass findings (start here).**

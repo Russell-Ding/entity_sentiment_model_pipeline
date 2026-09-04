@@ -1,0 +1,164 @@
+# Agent Labeling Instructions (v2.2  -  decisive sentiment)
+
+You will label financial news articles with entity-level sentiment.
+
+## Output Format
+
+For EACH article, output one JSON object (NO markdown, NO explanation):
+
+```json
+{
+  "id": "article_id",
+  "entities": [
+    {
+      "canonical_id": "AAPL",
+      "canonical_name": "Apple Inc.",
+      "type": "ORG",
+      "linked_ticker": "AAPL",
+      "linked_company": null,
+      "ner_mention_texts": ["Apple Inc.", "Apple"],
+      "coref_mention_texts": ["the company", "it", "the iPhone maker"],
+      "sentiment_score": 0.5
+    }
+  ]
+}
+```
+
+**CRITICAL**: Do NOT include `start_char`/`end_char` positions. Only text strings.
+**CRITICAL**: Do NOT include the article `text` in output.
+
+---
+
+## Entity Types - EXTRACT ALL SIX TYPES
+
+### ORG (Companies & Organizations)
+- Company names: "Apple Inc.", "Goldman Sachs", "Tesla"
+- Institutions: "Federal Reserve", "SEC", "NYSE", "EU", "OPEC"
+- Extract ALL name variations: "Cipher Mining Inc." AND "Cipher Mining"
+
+### TICKER (Stock Symbols)
+- Trading symbols: "AAPL", "TSLA", "GS", "CIFR"
+- From parentheses: "(NYSE:GS)" -> extract "GS"
+- NOT tickers: NYSE, SEC, FBI, CEO, CFO, ETF, IPO (these are acronyms)
+
+### PERSON (Individual Names)
+- "Tim Cook", "Elon Musk", "Jerome Powell"
+- Both full name AND last-name-only mentions: "Cook"
+
+### MONEY (ALL Monetary Amounts) - IMPORTANT, DO NOT SKIP
+- Dollar amounts: "$1.5 billion", "$500 million", "$14.76"
+- Other currencies: "EUR 200 million", "JPY 50 billion"
+- Stock prices: "$142.50"; Revenue/earnings: "$2.4 billion in revenue"
+- **Extract EVERY monetary amount in the article**
+
+### PERCENT (ALL Percentage Values) - IMPORTANT, DO NOT SKIP
+- Growth rates: "15%", "+2.5%", "-1.17%"; Market changes: "rose 3.2%"
+- **Extract EVERY percentage in the article**
+
+### DATE (ALL Dates & Time Periods) - IMPORTANT, DO NOT SKIP
+- Quarters "Q3 2024"; dates "January 15, 2025"; fiscal periods; relative "last quarter"; years
+- **Extract EVERY date reference in the article**
+
+---
+
+## NOT Entities - DO NOT Label
+
+- Concepts: "AI", "artificial intelligence", "blockchain"
+- Generic terms: "wealth manager", "investors", "analysts"
+- Technologies: "semiconductors", "NAND flash"
+- Locations: "Cleveland", "Silicon Valley" (unless acting as a government actor)
+- Regulations: "Dodd-Frank", "ESG rules"
+- Rankings: "Zacks Rank", "Strong Buy", "Outperform"
+
+---
+
+## ner_mention_texts vs coref_mention_texts (READ CAREFULLY)
+
+- **`ner_mention_texts`** = ONLY actual proper names / symbols of the entity as they
+  literally appear: "Apple Inc.", "Apple", "AAPL". Nothing else.
+- **`coref_mention_texts`** = every NON-NAME reference to that entity: pronouns AND
+  descriptive phrases. Put these here, NOT in ner_mention_texts:
+  - "it", "they", "the company", "the firm"
+  - descriptive epithets: "the iPhone maker", "the tech giant", "the search giant",
+    "the business", "the service", "the social network"
+  - role references: "the CEO", "the founder"
+- Do NOT fold a company's sub-brands/products into the parent's mentions. "Apple Music",
+  "Beats 1", "App Store" are separate ORGs (or not entities), never Apple mentions.
+
+---
+
+## Linking Rules
+
+### Ticker-Company Pairs
+When BOTH a company name AND its ticker symbol literally appear in the text:
+- Create SEPARATE ORG and TICKER entities, SAME `canonical_id` (the ticker)
+- ORG has `linked_ticker`, TICKER has `linked_company`, both SAME `sentiment_score`
+- If only the company NAME appears (no literal symbol like "AAPL" / "(NASDAQ:AAPL)"),
+  create only the ORG entity and set its `linked_ticker`. Do NOT invent a TICKER entity.
+
+### Same Entity, Different Names
+"Con Edison" and "Consolidated Edison, Inc." = SAME entity -> ONE entry, all name
+variants in `ner_mention_texts`.
+
+---
+
+## Sentiment Scoring  * THE MOST IMPORTANT PART *
+
+Score -1.0 to +1.0 for **ORG, TICKER, PERSON only**. Use `null` for MONEY, PERCENT, DATE.
+
+### Core rule: score the IMPLICATION for the entity, not the article's literal tone
+Financial news is written in a flat, factual style. **Do NOT default to 0.0 just because
+the sentence is factual.** Ask: *"Is what's happening GOOD or BAD for this entity's
+business, stock, or standing?"*  -  and score that, even when reported neutrally.
+
+**Negative for the entity** (score negative even if stated as plain fact):
+sued / lawsuit / antitrust / monopoly accusation / probe / investigation / fine /
+earnings miss / downgrade / cut guidance / layoffs / recall / outage / data breach /
+sanction / ban / delay / loss / decline / falls / warning / weak demand / loses share.
+
+**Positive for the entity** (score positive even if stated as plain fact):
+beat / tops estimates / upgrade / raises guidance / new product or launch / partnership
+or deal / contract win / record / surges / rises / strong demand / approval / expansion /
+gains share / buyback / dividend hike.
+
+### Reserve 0.0 ONLY for genuinely incidental mentions
+0.0 is correct only when the entity has NO stake in the news: e.g. an analyst's employer
+cited for a rating, a data/news source ("according to Bloomberg"), a neutral peer
+comparison, an exchange where something is listed, a venue. If the article reports
+something that helps or hurts the entity, it is NOT 0.0.
+
+| Score | Meaning | Trigger |
+|-------|---------|---------|
+| -1.0 to -0.7 | Very negative | Bankruptcy, fraud, criminal charges |
+| -0.4 to -0.6 | Moderately negative | Lawsuit/antitrust defendant, earnings miss, downgrade, layoffs, recall, probe |
+| -0.1 to -0.3 | Slightly negative | Cautious outlook, minor headwind, lagging a rival |
+| 0.0 | Neutral | ONLY incidental/no-stake mentions (see above) |
+| +0.1 to +0.3 | Slightly positive | Minor beat, modest gain, favorable mention |
+| +0.4 to +0.6 | Moderately positive | Earnings beat, upgrade, major deal/launch, winning a suit |
+| +0.7 to +1.0 | Very positive | Record results, blockbuster product, transformative win |
+
+### Adversarial examples (these are where models go wrong  -  get them right)
+- "Apple was sued by Epic, which accused it of running an illegal App Store monopoly."
+  -> **Apple -0.5** (antitrust defendant), **Epic +0.2** (plaintiff pressing its case). NOT 0.0/0.0.
+- "Amazon and Apple both reported revenue that missed analyst estimates."
+  -> **Amazon -0.5, Apple -0.5** (misses are bad). NOT 0.0.
+- "NXP and Samsung halted output after a Texas plant lost power."
+  -> **NXP -0.5, Samsung -0.4** (disruption). NOT 0.0.
+- "Chipmakers like Nvidia could benefit as demand surges."
+  -> **Nvidia +0.4**. NOT 0.0.
+- "Goldman Sachs analysts raised their Apple price target."
+  -> **Apple +0.4** (the upgrade), **Goldman Sachs 0.0** (Goldman is the rater, no stake).
+
+The same situation must get the SAME score across articles  -  be consistent.
+
+---
+
+## Extraction Checklist
+
+Before finishing each article, verify:
+- [ ] ALL ORG / TICKER / PERSON / MONEY / PERCENT / DATE extracted
+- [ ] Proper names in `ner_mention_texts`; pronouns & epithets in `coref_mention_texts`
+- [ ] Ticker-company pairs share same canonical_id (only when the symbol literally appears)
+- [ ] **Sentiment scores the implication for the entity, NOT the article's tone**
+- [ ] **0.0 used ONLY for genuinely incidental, no-stake mentions**
+- [ ] Any entity that is sued/missing/downgraded/disrupted = negative; beating/launching/winning = positive
